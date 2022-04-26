@@ -9,6 +9,7 @@
     :month-format="getMonthFormat"
     :header-date-format="getHeaderDateFormat"
     :title-date-format="getTitleDateFormat"
+    v-on:change="updateDate($event)"
     >
 
     </v-date-picker>
@@ -34,8 +35,12 @@
         getTitleDateFormat: function (date) {
           return date.toLocaleString('default', { month: 'long', year: 'numeric', day: 'numeric' })
         },
-      },
-    }
+        updateDate: function(updatedDate) {
+        this.date = updatedDate
+        this.$emit('change', this.date)
+        } ,
+      }
+  }
 
 
 </script>
