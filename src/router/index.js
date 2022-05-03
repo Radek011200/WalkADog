@@ -4,6 +4,7 @@ import VueRouter from 'vue-router'
 import NewWalk from "@/views/NewWalk";
 import MainView from "@/views/MainView";
 import AboutView from "@/views/AboutView";
+import TestOpinionView from "@/views/TestOpinionView";
 
 Vue.use(VueRouter)
 
@@ -17,6 +18,11 @@ const routes = [
     path: '/new-walk',
     name: 'NewWalk',
     component: NewWalk
+  },
+  {
+    path: '/test_opinion',
+    name: 'TestOpinion',
+    component: TestOpinionView
   },
   {
     path: '/about',
