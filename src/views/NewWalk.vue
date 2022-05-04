@@ -1,5 +1,6 @@
 <template>
 <div>
+<TitleComponent :title="title"></TitleComponent>
 <Calendar  v-on:change="updateDate($event)" />
   <v-container>
     <h3>Dostępni Trenerzy:</h3>
@@ -16,16 +17,10 @@
         </v-list-item-content>
         </div>
       </v-list-item>
-
     </v-list-item-group>
-
-
-
-
-
   </v-container>
   <v-card-actions class="justify-center">
-    <v-btn color="success" :x-large=true rounded>Następna strona</v-btn>
+    <v-btn href="/new-walk-part-2" color="success" :x-large=true rounded>Przejdź Dalej</v-btn>
   </v-card-actions>
   <v-card-actions class="justify-center" >
 
@@ -43,21 +38,28 @@
 <script>
 
   import Calendar from '../components/Calendar.vue'
+  import TitleComponent from "@/components/TitleComponent";
 
 
   export default {
     name: 'NewWalk',
     components: {
+      TitleComponent,
       Calendar
     },
     computed: {
       filteredTrainersByDate() {
         return this.trainers;
-      }
+      },
+
+    },
+    created() {
+      this.title = "Nowy Spacer";
     },
 
     data() {
       return {
+        title: 'Nowy spacer',
         trainers: [
           {
             id: 1,
@@ -101,6 +103,7 @@
       },
       updateDate: function(updatedDate) {
         this.date = updatedDate
+        console.log(this.date)
       }
     }
   }

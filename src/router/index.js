@@ -4,6 +4,7 @@ import VueRouter from 'vue-router'
 import NewWalk from "@/views/NewWalk";
 import MainView from "@/views/MainView";
 import AboutView from "@/views/AboutView";
+import NewWalkPart2 from "@/views/NewWalkPart2";
 
 Vue.use(VueRouter)
 
@@ -21,10 +22,12 @@ const routes = [
   {
     path: '/about',
     name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
     component: AboutView,
+  },
+  {
+    path: '/new-walk-part-2',
+    name: 'NewWalkPart2',
+    component: NewWalkPart2,
   }
 ]
 

@@ -19,4 +19,8 @@ export default {
 </script>
 
 <style>
+.head-title {
+  font-size: 2.5rem;
+  text-align: center;
+}
 </style>
