@@ -2,18 +2,25 @@
 <div>
 <TitleComponent :title="title"></TitleComponent>
 
+<v-list-item v-for="walk in filteredWalksByDate" :key="walk.id" dense>
+  <v-list-item-content class="lista">
+    <WalkEntry :id="walk.id" :dog_name="walk.dog_name" :start_hour="walk.start_hour" :end_hour="walk.end_hour" :trainer="walk.trainer"></WalkEntry>
+  </v-list-item-content>
+  </v-list-item>
 </div>
 </template>
 
 <script>
 
   import TitleComponent from "@/components/TitleComponent";
+  import WalkEntry from "@/components/WalkEntry";
 
 
   export default {
     name: 'WalkList',
     components: {
-      TitleComponent
+      TitleComponent,
+      WalkEntry
     },
     computed: {
       filteredWalksByDate() {
@@ -60,16 +67,17 @@
         ]
       }
     },
-
-
-    methods: {
-      back() {
-        this.$router.go(-1)
-      },
-      updateDate: function(updatedDate) {
-        this.date = updatedDate
-        console.log(this.date)
-      }
-    }
   }
 </script>
+
+<style>
+
+.lista {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+}
+
+</style>
