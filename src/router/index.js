@@ -5,6 +5,7 @@ import NewWalk from "@/views/NewWalk";
 import MainView from "@/views/MainView";
 import AboutView from "@/views/WalkList";
 import NewWalkPart2 from "@/views/NewWalkPart2";
+import TrainersList from "@/views/TrainersList";
 
 Vue.use(VueRouter)
 
@@ -17,6 +18,11 @@ const routes = [{
         path: '/new-walk',
         name: 'NewWalk',
         component: NewWalk
+    },
+    {
+        path: '/trainers',
+        name: 'TrainersList',
+        component: TrainersList
     },
     {
         path: '/walk-list',

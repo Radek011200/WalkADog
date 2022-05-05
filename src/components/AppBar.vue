@@ -16,7 +16,7 @@
           </v-icon>
           <span class="mt-2 mr-2 caption">Psy</span>
         </v-btn>
-        <v-btn class="flexcol" icon height="75" width=25%>
+        <v-btn href ="/trainers" class="flexcol" icon height="75" width=25%>
           <v-icon :x-large=true class="" >
             mdi-account-group
           </v-icon>

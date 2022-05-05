@@ -16,7 +16,7 @@
                     </div>
                 </v-container>
             </v-card-text>
-            <v-card-actions class="lista">
+            <v-card-actions class="lista" style="margin: 0 20px;">
                 <WalkResign/>
                 <v-btn href="#" color="success" :large=true rounded>
                     Edytuj
