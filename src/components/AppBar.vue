@@ -28,7 +28,7 @@
           </v-icon>
           <span class="mt-2 caption"></span>
         </v-btn>
-        <v-btn href="/about" class="flexcol" icon height="75" width=25%>
+        <v-btn href="/walk-list" class="flexcol" icon height="75" width=25%>
           <v-icon :x-large=true class="mt-1" >
             mdi-walk
           </v-icon>
