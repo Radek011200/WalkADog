@@ -87,13 +87,13 @@ export default {
   width: 90%;
   box-shadow: 0px 0px 1px 3px rgba(0,0,0,20%);
   margin: 5%;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 .bar {
   background: linear-gradient(to right, black, black var(--fill), white var(--fill), white);
   display: inline-block;
-  width: 50%;
+  width: 55%;
   height: 13px;
   box-shadow: 0px 0px 0px 2px rgb(0, 0, 0);
 }
@@ -102,6 +102,7 @@ export default {
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+  width: 32px;
 }
 .grid-container{
   display: inline-flex;
@@ -110,14 +111,15 @@ export default {
   display: inline-grid;
   text-align: center;
   margin: auto;
-  width: 50%;
+  width: 45%;
   min-width: 180px;
 }
 
 .grid-item-2{
+  padding-left: 5px;
   display: inline-grid;
   margin: auto;
-  width: 50%;
+  width: 55%;
   max-width: 400px;
 }
 
