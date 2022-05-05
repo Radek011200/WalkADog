@@ -3,19 +3,19 @@
 
     <div class="grid-item">
       <h1 class="head-title"> {{avg_opinion}}/5</h1>
-      <div><v-icon :style="this.star_fill(1)" :x-large=true class="star" >
+      <div><v-icon :style="this.star_fill(1)" :large="true" class="star" >
         mdi-star
       </v-icon>
-        <v-icon :style="this.star_fill(2)" :x-large=true class="star" >
+        <v-icon :style="this.star_fill(2)" :large="true" class="star" >
           mdi-star
         </v-icon>
-        <v-icon :style="this.star_fill(3)" :x-large=true class="star" >
+        <v-icon :style="this.star_fill(3)" :large="true" class="star" >
           mdi-star
         </v-icon>
-        <v-icon :style="this.star_fill(4)" :x-large=true class="star" >
+        <v-icon :style="this.star_fill(4)" :large="true" class="star" >
           mdi-star
         </v-icon>
-        <v-icon :style="this.star_fill(5)" :x-large=true class="star" >
+        <v-icon :style="this.star_fill(5)" :large="true" class="star" >
           mdi-star
         </v-icon>
       </div>
@@ -93,7 +93,7 @@ export default {
 .bar {
   background: linear-gradient(to right, black, black var(--fill), white var(--fill), white);
   display: inline-block;
-  width: 150px;
+  width: 50%;
   height: 13px;
   box-shadow: 0px 0px 0px 2px rgb(0, 0, 0);
 }
@@ -110,11 +110,15 @@ export default {
   display: inline-grid;
   text-align: center;
   margin: auto;
+  width: 50%;
+  min-width: 180px;
 }
 
 .grid-item-2{
   display: inline-grid;
   margin: auto;
+  width: 50%;
+  max-width: 400px;
 }
 
 </style>

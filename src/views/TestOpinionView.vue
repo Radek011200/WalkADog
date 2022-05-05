@@ -1,7 +1,7 @@
 <template>
 <div>
   <TitleComponent :title="title"></TitleComponent>
-  <OpinionSummary :i_star="10" :i-i_star="7" :i-i-i_star="13" :i-v_star="51" :v_star="183"></OpinionSummary>
+  <OpinionSummary :i_star="10" :i-i_star="7" :i-i-i_star="13" :i-v_star="51" :v_star="143"></OpinionSummary>
   <v-card-actions class="justify-center">
     <v-btn color="success" :x-large=true rounded>Dodaj Opinię</v-btn>
   </v-card-actions>
