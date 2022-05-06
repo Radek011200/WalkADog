@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 import NewWalk from "@/views/NewWalk";
-import MainView from "@/views/MainView";
+import MapView from "@/views/MapView";
 import AboutView from "@/views/AboutView";
 
 Vue.use(VueRouter)
@@ -11,7 +11,7 @@ const routes = [
   {
     path: '/',
     name: 'main-page',
-    component: MainView
+    component: MapView
   },
   {
     path: '/new-walk',
