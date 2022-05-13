@@ -9,14 +9,27 @@
 </template>
 
 <script>
+import { HTTP } from '@/main.js';
 import TitleComponent from "@/components/TitleComponent";
+
 export default {
   name: "MainView",
   components: {TitleComponent},
   data() {
     return {
-      title: "Strona główna"
+      title: "Strona główna",
+      posts: [],
     };
+  },
+  mounted () {
+    HTTP.get(`users`)
+        .then(response => {
+          this.posts = response.data
+        })
+        .catch(e => {
+          this.errors.push(e)
+        })
+
   }
 }
 </script>

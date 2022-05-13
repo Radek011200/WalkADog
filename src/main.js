@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import router from './router'
 import 'roboto-fontface/css/roboto/roboto-fontface.css'
 import '@mdi/font/css/materialdesignicons.css'
+import axios from "axios";
 
 Vue.config.productionTip = false
 
@@ -35,4 +36,12 @@ export default new Vuetify({
     locales: { pl },
     current: 'pl',
   },
+})
+export const HTTP = axios.create({
+  baseURL: 'http://localhost:8000/api',
+  headers: {
+    Authorization: 'Bearer {token}',
+    xsrfCookieName: 'XSRF-TOKEN',
+    xsrfHeaderName: 'X-XSRF-TOKEN',
+  }
 })
