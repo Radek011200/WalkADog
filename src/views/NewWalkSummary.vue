@@ -2,10 +2,14 @@
 <div>
   <TitleComponent :title="title"></TitleComponent>
   <v-card-actions class="justify-center">
-    {{ trainer.name}} - Dostępne godziny
+      <b>Podsumowanie</b>
   </v-card-actions>
   <v-card-actions class="justify-center">
-    <v-btn href="/new-walk-summary" color="success" :x-large=true rounded>Przejdź do podsumowania</v-btn>
+      <Summary />
+  </v-card-actions>
+  
+  <v-card-actions class="justify-center">
+    <v-btn href="/new-walk-summary" color="success" :x-large=true rounded>Zatwierdź</v-btn>
   </v-card-actions>
   <v-card-actions class="justify-center">
     <v-btn text :x-large=true @click="back()">Powrót</v-btn>
@@ -17,18 +21,16 @@
 <script>
 
   import TitleComponent from "@/components/TitleComponent";
+  import Summary from "@/components/Summary";
   export default {
-    name: "NewWalkPart2",
+    name: "NewWalkSummary",
     components: {
-      TitleComponent
+      TitleComponent,
+      Summary,
     },
     data() {
       return {
         title: "Nowy spacer",
-        trainer: {
-          name: "Trener 1",
-
-        }
       }
     },
     methods: {
