@@ -16,8 +16,8 @@
           </v-icon>
           <span class="mt-2 mr-2 caption">Psy</span>
         </v-btn>
-        <v-btn class="flexcol" icon height="75" width=25%>
-          <v-icon :x-large=true class="">
+        <v-btn href ="/trainers" class="flexcol" icon height="75" width=25%>
+          <v-icon :x-large=true class="" >
             mdi-account-group
           </v-icon>
           <span class="mt-2 caption">Trenerzy</span>
@@ -28,8 +28,8 @@
           </v-icon>
           <span class="mt-2 caption"></span>
         </v-btn>
-        <v-btn href="/about" class="flexcol" icon height="75" width=25%>
-          <v-icon :x-large=true class="mt-1">
+        <v-btn href="/walk-list" class="flexcol" icon height="75" width=25%>
+          <v-icon :x-large=true class="mt-1" >
             mdi-walk
           </v-icon>
           <span class="mt-1 caption">Spacery</span>
