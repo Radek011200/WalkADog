@@ -7,6 +7,7 @@ import AboutView from "@/views/AboutView";
 import NewWalkPart2 from "@/views/NewWalkPart2";
 import NewWalkSummary from "@/views/NewWalkSummary";
 import AddOpinion from "@/views/AddOpinion"
+import TestOpinionView from "@/views/TestOpinionView";
 
 Vue.use(VueRouter)
 
@@ -20,6 +21,11 @@ const routes = [
     path: '/new-walk',
     name: 'NewWalk',
     component: NewWalk
+  },
+  {
+    path: '/test_opinion',
+    name: 'TestOpinion',
+    component: TestOpinionView
   },
   {
     path: '/about',
