@@ -9,55 +9,61 @@ import NewWalkSummary from "@/views/NewWalkSummary";
 import AddOpinion from "@/views/AddOpinion"
 import TestOpinionView from "@/views/TestOpinionView";
 import TrainersList from "@/views/TrainersList";
+import LoginView from "@/views/LoginView";
 
 Vue.use(VueRouter)
 
 const routes = [
-  {
-    path: '/',
-    name: 'main-page',
-    component: MainView
-  },
-  {
-    path: '/new-walk',
-    name: 'NewWalk',
-    component: NewWalk
-  },
-  {
-    path: '/about',
-    name: 'about',
-    component: AboutView,
-  },
-  {
-    path: '/new-walk-part-2',
-    name: 'NewWalkPart2',
-    component: NewWalkPart2,
-  },
-  {
-    path: '/test_opinion',
-    name: 'TestOpinion',
-    component: TestOpinionView
-  },
-  {
-    path: '/new-walk-summary',
-    name: 'NewWalkSummary',
-    component: NewWalkSummary,
-  },
-  {
-    path: '/add-opinion',
-    name: 'AddOpinon',
-    component: AddOpinion,
-  },
-  {
-    path: '/trainers',
-    name: 'TrainersList',
-    component: TrainersList
-  },
-  {
-    path: '/walk-list',
-    name: 'walklist',
-    component: AboutView,
-  },
+    {
+        path: '/',
+        name: 'main-page',
+        component: MainView
+    },
+    {
+        path: '/login',
+        name: 'login',
+        component: LoginView,
+    },
+    {
+        path: '/new-walk',
+        name: 'NewWalk',
+        component: NewWalk
+    },
+    {
+        path: '/about',
+        name: 'about',
+        component: AboutView,
+    },
+    {
+        path: '/new-walk-part-2',
+        name: 'NewWalkPart2',
+        component: NewWalkPart2,
+    },
+    {
+        path: '/test_opinion',
+        name: 'TestOpinion',
+        component: TestOpinionView
+    },
+    {
+        path: '/new-walk-summary',
+        name: 'NewWalkSummary',
+        component: NewWalkSummary,
+    },
+    {
+        path: '/add-opinion',
+        name: 'AddOpinon',
+        component: AddOpinion,
+    },
+    {
+        path: '/trainers',
+        name: 'TrainersList',
+        component: TrainersList
+    },
+    {
+        path: '/walk-list',
+        name: 'walklist',
+        component: AboutView,
+    },
 ]
 
 const router = new VueRouter({
