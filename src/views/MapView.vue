@@ -1,6 +1,8 @@
 <template>
   <div style="height: 100%">
     <title-component></title-component>
+    <DogMap></DogMap>
+    <TrainerMap></TrainerMap>
     <MapComponent style="height: 100%"></MapComponent>
   </div>
 
@@ -10,11 +12,15 @@
 
 import TitleComponent from "@/components/TitleComponent";
 import MapComponent from "@/components/MapComponent"
+import DogMap from "@/components/DogMap"
+import TrainerMap from "@/components/TrainerMap"
 export default {
   name: "NewWalkPart2",
   components: {
     TitleComponent,
-    MapComponent
+    MapComponent,
+    DogMap,
+    TrainerMap
   },
   data() {
     return {

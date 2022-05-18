@@ -4,6 +4,7 @@ import VueRouter from 'vue-router'
 import NewWalk from "@/views/NewWalk";
 import MapView from "@/views/MapView";
 import AboutView from "@/views/AboutView";
+import MainView from "@/views/MainView";
 
 Vue.use(VueRouter)
 
@@ -11,6 +12,11 @@ const routes = [
   {
     path: '/',
     name: 'main-page',
+    component: MainView
+  },
+  {
+    path: '/map-view',
+    name: 'MapView',
     component: MapView
   },
   {
