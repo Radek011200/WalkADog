@@ -9,6 +9,7 @@ import NewWalkSummary from "@/views/NewWalkSummary";
 import AddOpinion from "@/views/AddOpinion"
 import TestOpinionView from "@/views/TestOpinionView";
 import TrainersList from "@/views/TrainersList";
+import MapView from "@/views/MapView";
 
 Vue.use(VueRouter)
 
@@ -17,6 +18,11 @@ const routes = [
     path: '/',
     name: 'main-page',
     component: MainView
+  },
+  {
+    path: '/map-view',
+    name: 'MapView',
+    component: MapView
   },
   {
     path: '/new-walk',
