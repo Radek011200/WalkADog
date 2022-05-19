@@ -9,9 +9,9 @@
           </v-card-text>
         </v-card>
         <v-form>
-          <v-text-field label="Login" name="Login" prepend-inner-icon="mdi-account-circle" type="login"
+          <v-text-field v-model="login" label="Login" name="Login" prepend-inner-icon="mdi-account-circle" type="login"
                         class="rounded-pill" outlined></v-text-field>
-          <v-text-field label="Hasło" name="Password" prepend-inner-icon="mdi-lock" type="password"
+          <v-text-field v-model="password" label="Hasło" name="Password" prepend-inner-icon="mdi-lock" type="password"
                         class="rounded-pill"
                         outlined></v-text-field>
 
@@ -19,7 +19,7 @@
               class="login-text"
               to="/remember-pass"> Zarejestruj się! </router-link></span>
 
-          <v-btn class="mb-2 rounded-pill" color="success" x-large block dark>Zaloguj</v-btn>
+          <v-btn class="mb-2 rounded-pill" color="success" x-large block dark @click="loginUser">Zaloguj</v-btn>
           <router-link to="/remember-pass"><span class="login-text justify-center">Nie pamiętasz hasła?</span>
           </router-link>
         </v-form>
@@ -30,7 +30,26 @@
 
 <script>
 export default {
-  name: "LoginForm.vue"
+  name: "LoginForm.vue",
+  data() {
+    return {
+      login: "",
+      password: "",
+    };
+  },
+
+  methods: {
+    loginUser() {
+      const data = {
+        login: this.login,
+        password: this.password,
+      };
+
+      this.$emit("user-login-details", data);
+
+    },
+  },
+
 }
 </script>
 
