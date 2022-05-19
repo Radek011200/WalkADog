@@ -2,9 +2,9 @@
 <div>
 <TitleComponent :title="title"></TitleComponent>
 
-<v-list-item v-for="walk in filteredWalksByDate" :key="walk.id" dense>
+<v-list-item v-for="walk in this.walks" :key="walk.url" dense>
   <v-list-item-content class="lista">
-    <WalkEntry :id="walk.id" :dog_name="walk.dog_name" :start_hour="walk.start_hour" :end_hour="walk.end_hour" :trainer="walk.trainer"></WalkEntry>
+    <WalkEntry :id="walk.id" :dog_name="walk.dog.name" :start_hour="walk.start_hour" :end_hour="walk.end_hour" :trainer="walk.trainer.first_name + ' ' + walk.trainer.last_name"></WalkEntry>
   </v-list-item-content>
   </v-list-item>
 </div>
@@ -14,6 +14,7 @@
 
   import TitleComponent from "@/components/TitleComponent";
   import WalkEntry from "@/components/WalkEntry";
+  import axios from 'axios';
 
 
   export default {
@@ -22,52 +23,58 @@
       TitleComponent,
       WalkEntry
     },
-    computed: {
-      filteredWalksByDate() {
-        return this.walks;
-      },
 
-    },
+    
+
     created() {
       this.title = "Lista Spacerów";
+      this.getToken();
+      this.getWalks();
     },
 
     data() {
       return {
         title: 'Lista Spacerów',
-        walks: [
-          {
-            id: 1,
-            dog_name: 'Max',
-            start_hour: '12:00',
-            end_hour: '13:00',
-            trainer: 'Jan Kowalski',
-          },
-          {
-            id: 2,
-            dog_name: 'Burek',
-            start_hour: '13:00',
-            end_hour: '14:00',
-            trainer: 'Jan Kowalski',
-          },
-          {
-            id: 3,
-            dog_name: 'Rex',
-            start_hour: '14:00',
-            end_hour: '15:00',
-            trainer: 'Jan Kowalski',
-          },
-          {
-            id: 4,
-            dog_name: 'Mruczek',
-            start_hour: '15:00',
-            end_hour: '16:00',
-            trainer: 'Jan Kowalski',
-          },
-        ]
+        walks: []
       }
     },
-  }
+
+    methods: {
+      getToken() {
+     axios({
+            method: 'post',
+            url: 'http://localhost:8000/api-token-auth/',
+            data: {
+              username: 'admin',
+              password: 'admin'
+            }
+        }).then(response => localStorage.setItem("token",response.data.token ));
+    },
+
+    getWalks() {
+      axios({
+            method: 'get',
+            url: 'http://localhost:8000/api/walks/',
+            headers: {
+              Authorization: 'Token ' + localStorage.token
+            }
+        }).then(response => this.walks = response.data.results);
+        }
+    },
+
+     getDetails(url) {
+      let result = '';
+      axios({
+            method: 'get',
+            url: url,
+            headers: {
+              Authorization: 'Token ' + localStorage.token
+            }
+        }).then(response => result = response.data.result);
+        return result;
+    },
+    }
+  
 </script>
 
 <style>
