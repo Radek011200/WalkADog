@@ -16,6 +16,7 @@ export default {
   data: () => ({
     login: "",
     password: "",
+    token: "",
   }),
   created() {
     if (localStorage.getItem("token")) {
@@ -23,14 +24,6 @@ export default {
     }
   },
   methods: {
-    checkLoginDetails(data) {
-      if (data.login !== "" && data.password !== "") {
-        this.getToken(data.login, data.password);
-      } else {
-        alert("Niepoprawne dane logowania");
-      }
-    },
-
     getToken(login, password) {
       axios({
         method: 'post',
@@ -39,8 +32,26 @@ export default {
           username: login,
           password: password,
         }
-      }).then(response => localStorage.setItem("token", response.data.token));
+      }).then(response => this.token = response.data.token);
+      localStorage.setItem("token", this.token);
+      console.log('token' + localStorage.getItem("token"));
+      console.log(this.token);
+
     },
+
+    checkLoginDetails(data) {
+      if (data.login !== "" && data.password !== "") {
+        this.getToken(data.login, data.password);
+        console.log('token' + localStorage.getItem("token"));
+        if (localStorage.getItem("token")) {
+          this.$router.push("/");
+        }
+      } else {
+        alert("Niepoprawne dane logowania");
+      }
+    },
+
+
   },
 }
 </script>

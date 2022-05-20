@@ -15,56 +15,56 @@ import MapView from "@/views/MapView";
 Vue.use(VueRouter)
 
 const routes = [
-  {
-    path: '/',
-    name: 'main-page',
-    component: MainView
-  },
-  {
-    path: '/map-view',
-    name: 'MapView',
-    component: MapView
-  },
-  {
-    path: '/new-walk',
-    name: 'NewWalk',
-    component: NewWalk
-  },
-  {
-    path: '/about',
-    name: 'about',
-    component: AboutView,
-  },
-  {
-    path: '/new-walk-part-2',
-    name: 'NewWalkPart2',
-    component: NewWalkPart2,
-  },
-  {
-    path: '/test_opinion',
-    name: 'TestOpinion',
-    component: TestOpinionView
-  },
-  {
-    path: '/new-walk-summary',
-    name: 'NewWalkSummary',
-    component: NewWalkSummary,
-  },
-  {
-    path: '/add-opinion',
-    name: 'AddOpinon',
-    component: AddOpinion,
-  },
-  {
-    path: '/trainers',
-    name: 'TrainersList',
-    component: TrainersList
-  },
-  {
-    path: '/walk-list',
-    name: 'walklist',
-    component: AboutView,
-  },
+    {
+        path: '/',
+        name: 'main-page',
+        component: MainView
+    },
+    {
+        path: '/map-view',
+        name: 'MapView',
+        component: MapView
+    },
+    {
+        path: '/new-walk',
+        name: 'NewWalk',
+        component: NewWalk
+    },
+    {
+        path: '/about',
+        name: 'about',
+        component: AboutView,
+    },
+    {
+        path: '/new-walk-part-2',
+        name: 'NewWalkPart2',
+        component: NewWalkPart2,
+    },
+    {
+        path: '/test_opinion',
+        name: 'TestOpinion',
+        component: TestOpinionView
+    },
+    {
+        path: '/new-walk-summary',
+        name: 'NewWalkSummary',
+        component: NewWalkSummary,
+    },
+    {
+        path: '/add-opinion',
+        name: 'AddOpinon',
+        component: AddOpinion,
+    },
+    {
+        path: '/trainers',
+        name: 'TrainersList',
+        component: TrainersList
+    },
+    {
+        path: '/walk-list',
+        name: 'walklist',
+        component: AboutView,
+    },
     {
         path: '/login',
         name: 'login',

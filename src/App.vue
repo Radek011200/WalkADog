@@ -16,7 +16,9 @@ export default {
   data: () => ({}),
   created() {
     if (!localStorage.getItem("token")) {
-      this.$router.push("/login");
+      if (this.$route.path !== "/login") {
+        this.$router.push("/login");
+      }
     }
   },
 
