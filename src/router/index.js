@@ -11,6 +11,8 @@ import TestOpinionView from "@/views/TestOpinionView";
 import TrainersList from "@/views/TrainersList";
 import LoginView from "@/views/LoginView";
 import MapView from "@/views/MapView";
+import NotFoundView from "@/views/NotFoundView";
+
 
 Vue.use(VueRouter)
 
@@ -70,6 +72,14 @@ const routes = [
         name: 'login',
         component: LoginView,
     },
+    {
+        path: '*',
+        redirect: '/404',
+    },
+    {
+        path: '/404',
+        component: NotFoundView,
+    }
 ]
 
 const router = new VueRouter({
