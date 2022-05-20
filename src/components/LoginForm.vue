@@ -10,14 +10,13 @@
         </v-card>
         <v-form>
           <v-text-field v-model="login" label="Login" name="Login" prepend-inner-icon="mdi-account-circle" type="login"
-                        class="rounded-pill" outlined></v-text-field>
+                        class="rounded-pill " color="success" outlined></v-text-field>
           <v-text-field v-model="password" label="Hasło" name="Password" prepend-inner-icon="mdi-lock" type="password"
-                        class="rounded-pill"
-                        outlined></v-text-field>
+                        class="rounded-pill" color="success" outlined></v-text-field>
 
           <span class="login-text justify-center mb-10" style="color: black">Nie masz konta?   <router-link
               class="login-text"
-              to="/remember-pass"> Zarejestruj się! </router-link></span>
+              to="/register"> Zarejestruj się! </router-link></span>
 
           <v-btn class="mb-2 rounded-pill" color="success" x-large block dark @click="loginUser">Zaloguj</v-btn>
           <router-link to="/remember-pass"><span class="login-text justify-center">Nie pamiętasz hasła?</span>

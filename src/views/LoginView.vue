@@ -24,28 +24,29 @@ export default {
     }
   },
   methods: {
-    getToken(login, password) {
-      axios({
+    async getToken(login, password) {
+      await axios({
         method: 'post',
         url: 'http://127.0.0.1:8000/api-token-auth/',
         data: {
           username: login,
           password: password,
         }
-      }).then(response => this.token = response.data.token);
+      }).then(response => this.token = response.data.token)
+          .catch(function (error) {
+            if (error.response.status === 400) {
+              alert("Błędny login lub hasło");
+            }
+          });
       localStorage.setItem("token", this.token);
-      console.log('token' + localStorage.getItem("token"));
-      console.log(this.token);
-
+      if (this.token !== "") {
+        await this.$router.push("/");
+      }
     },
 
     checkLoginDetails(data) {
       if (data.login !== "" && data.password !== "") {
         this.getToken(data.login, data.password);
-        console.log('token' + localStorage.getItem("token"));
-        if (localStorage.getItem("token")) {
-          this.$router.push("/");
-        }
       } else {
         alert("Niepoprawne dane logowania");
       }

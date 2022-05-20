@@ -1,7 +1,5 @@
 <template>
   <div class="page-loader" v-if="!isloaded">
-
-
     <v-icon :x-large=true class="cube">
       mdi-dog-side
     </v-icon>
