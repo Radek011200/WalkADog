@@ -1,5 +1,6 @@
 <template>
   <v-app>
+    <PageLoader/>
     <app-bar/>
     <v-main>
       <router-view/>
@@ -9,10 +10,11 @@
 
 <script>
 import AppBar from "@/components/AppBar";
+import PageLoader from "@/components/PageLoader";
 
 export default {
   name: 'App',
-  components: {AppBar},
+  components: {PageLoader, AppBar},
   data: () => ({}),
   created() {
     if (!localStorage.getItem("token")) {
