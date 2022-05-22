@@ -10,6 +10,7 @@ import router from './router'
 import 'roboto-fontface/css/roboto/roboto-fontface.css'
 import '@mdi/font/css/materialdesignicons.css'
 import axios from "axios";
+import bulma from "bulma";
 
 Vue.config.productionTip = false
 
@@ -22,7 +23,7 @@ new Vue({
 }).$mount('#app')
 
 Vue.use(Vuetify).component('fa', FontAwesomeIcon)
-
+Vue.use(bulma)
 Vue.component('my-component', {
     methods: {
         changeLocale() {

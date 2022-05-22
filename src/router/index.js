@@ -12,6 +12,7 @@ import TrainersList from "@/views/TrainersList";
 import LoginView from "@/views/LoginView";
 import MapView from "@/views/MapView";
 import NotFoundView from "@/views/NotFoundView";
+import AccountView from "@/views/AccountView";
 
 
 Vue.use(VueRouter)
@@ -79,6 +80,11 @@ const routes = [
     {
         path: '/404',
         component: NotFoundView,
+    },
+    {
+        path: '/account',
+        component: AccountView,
+        name: 'AccountView',
     }
 ]
 
