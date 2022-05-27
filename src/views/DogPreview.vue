@@ -51,7 +51,7 @@ export default {
       this.$router.push("/dogs/" + this.id + "/more-details");
     },
     back() {
-      this.$router.go(-1)
+      this.$router.push("/dogs/");
     },
   },
   created() {
