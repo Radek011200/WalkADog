@@ -10,7 +10,7 @@
 
     <v-container fluid>
       <v-row justify-sm="center" align="center" class="navbar_main" :dense=true>
-        <v-btn class="flexcol" icon height="75" width=15%>
+        <v-btn href="/dogs" class="flexcol" icon height="75" width=15%>
           <v-icon :x-large=true class="">
             mdi-dog-side
           </v-icon>

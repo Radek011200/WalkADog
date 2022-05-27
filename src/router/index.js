@@ -13,6 +13,9 @@ import LoginView from "@/views/LoginView";
 import MapView from "@/views/MapView";
 import NotFoundView from "@/views/NotFoundView";
 import AccountView from "@/views/AccountView";
+import DogsView from "@/views/DogsView";
+import DogPreview from "@/views/DogPreview";
+import DogMoreDetails from "@/views/DogMoreDetails";
 
 
 Vue.use(VueRouter)
@@ -85,6 +88,21 @@ const routes = [
         path: '/account',
         component: AccountView,
         name: 'AccountView',
+    },
+    {
+        path: '/dogs',
+        component: DogsView,
+        name: 'DogsView',
+    },
+    {
+        path: '/dogs/:dogId',
+        component: DogPreview,
+        name: 'DogsPreview',
+    },
+    {
+        path: '/dogs/:dogId/more-details',
+        component: DogMoreDetails,
+        name: 'DogsMoreDetails',
     }
 ]
 
