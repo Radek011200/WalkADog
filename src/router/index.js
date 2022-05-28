@@ -5,7 +5,10 @@ import NewWalk from "@/views/NewWalk";
 import MainView from "@/views/MainView";
 import AboutView from "@/views/AboutView";
 import NewWalkPart2 from "@/views/NewWalkPart2";
-import AddOpinion from "@/views/AddOpinion"
+import AddOpinion from "@/views/AddOpinion";
+import Register from "@/views/RegisterUser";
+import TrainerProfile from "@/views/TrainerProfile";
+import YourWalks from "@/views/YourWalks";
 
 Vue.use(VueRouter)
 
@@ -31,10 +34,25 @@ const routes = [
     component: NewWalkPart2,
   },
   {
+    path: '/register',
+    name: 'Register',
+    component: Register,
+  },
+  {
+    path: '/trainer-profile',
+    name: 'TrainerProfile',
+    component: TrainerProfile,
+  },
+  {
+    path: '/your-walks',
+    name: 'YourWalks',
+    component: YourWalks,
+  },
+  {
     path: '/add-opinion',
-    name: 'AddOpinon',
+    name: 'AddOpinion',
     component: AddOpinion,
-  }
+  },
 ]
 
 const router = new VueRouter({
