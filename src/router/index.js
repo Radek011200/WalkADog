@@ -15,7 +15,6 @@ import NotFoundView from "@/views/NotFoundView";
 import AccountView from "@/views/AccountView";
 import DogsView from "@/views/DogsView";
 import DogPreview from "@/views/DogPreview";
-import DogMoreDetails from "@/views/DogMoreDetails";
 
 
 Vue.use(VueRouter)
@@ -99,11 +98,6 @@ const routes = [
         component: DogPreview,
         name: 'DogsPreview',
     },
-    {
-        path: '/dogs/:dogId/more-details',
-        component: DogMoreDetails,
-        name: 'DogsMoreDetails',
-    }
 ]
 
 const router = new VueRouter({

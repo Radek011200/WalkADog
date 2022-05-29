@@ -9,9 +9,7 @@
       <p class="dog-name">{{ dog.name }} |</p>
       <div></div>
       <div>
-        <!--        link-->
-
-        <v-btn icon href="/dogs/1/" color="success" class="dog-link">
+        <v-btn icon v-bind:href="'/dogs/'+dog.dog_id" color="success" class="dog-link">
           <v-icon large class="info-icon" color="white">mdi-information-variant</v-icon>
         </v-btn>
         <v-icon large class="edit-icon" color="gray" style="opacity: 0.89;">mdi-pencil</v-icon>
@@ -47,7 +45,7 @@ export default {
   width: 90%;
   height: 20%;
 
-  background: #43AE31;
+  background: #4bae50;
   border-radius: 30px;
 }
 
