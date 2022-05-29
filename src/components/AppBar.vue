@@ -103,10 +103,10 @@ export default {
 
         if (innerWidth > 600 && this.bottomValue === false) {
           this.bottomValue = true;
-          location.reload();
+
 
         } else if (innerWidth < 600 && this.bottomValue === true) {
-          location.reload();
+          this.bottomValue = false;
 
         }
       }

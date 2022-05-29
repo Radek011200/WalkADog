@@ -2,7 +2,7 @@
   <div>
     <TitleComponent :title="title"></TitleComponent>
     <DogsList v-for="dog in dogsDataList" :key="dog.name" :dog="dog"/>
-
+    <v-btn color="success" href="/dog/add-dog/" :large=true rounded> Dodaj psa</v-btn>
   </div>
 </template>
 
@@ -51,5 +51,20 @@ export default {
 </script>
 
 <style scoped>
+.v-btn {
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+  padding-bottom: 100px;
+  margin-bottom: 1.5rem;
 
+}
+
+@media screen and (min-width: 600px) {
+  .v-btn {
+    width: 60%;
+    margin-left: 20%;
+    margin-right: 20%;
+  }
+}
 </style>

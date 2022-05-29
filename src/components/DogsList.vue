@@ -3,7 +3,7 @@
 
     <div class="asd">
       <v-img class="dog-photo"
-             src="../assets/previewDog.jpeg"></v-img>
+             v-bind:src=dog.photo></v-img>
       <!--      DO ZMIANY KIEDY BEDZIE FIX Z API-->
       <!--      <v-img class="dog-photo" v-bind:src=dog.photo max-width="15%"></v-img>-->
       <p class="dog-name">{{ dog.name }} |</p>
