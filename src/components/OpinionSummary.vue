@@ -1,7 +1,9 @@
 <template>
   <div class="shadow grid-container">
-
-    <div class="grid-item">
+    <div v-if="sum_opinion === 0" class="grid-item">
+      <h1 class="head-title">Brak opinii</h1>
+    </div>
+    <div v-else class="grid-item">
       <h1 class="head-title"> {{avg_opinion}}/5</h1>
       <div><v-icon :style="this.star_fill(1)" :large="true" class="star" >
         mdi-star
@@ -23,11 +25,11 @@
         <h5>Na podstawie {{sum_opinion}} opinii</h5>
     </div>
     <div class="grid-item-2">
-      <h3>5 <div :style="this.bar_fill(this.V_star)" class="bar"></div> {{this.V_star}}</h3>
-      <h3>4 <div :style="this.bar_fill(this.IV_star)" class="bar"></div> {{this.IV_star}}</h3>
-      <h3>3 <div :style="this.bar_fill(this.III_star)" class="bar"></div> {{this.III_star}}</h3>
-      <h3>2 <div :style="this.bar_fill(this.II_star)" class="bar"></div> {{this.II_star}}</h3>
-      <h3>1 <div :style="this.bar_fill(this.I_star)" class="bar"></div> {{this.I_star}}</h3>
+      <h3>5 <div :style="this.bar_fill(this.v_star)" class="bar"></div> {{this.v_star}}</h3>
+      <h3>4 <div :style="this.bar_fill(this.iv_star)" class="bar"></div> {{this.iv_star}}</h3>
+      <h3>3 <div :style="this.bar_fill(this.iii_star)" class="bar"></div> {{this.iii_star}}</h3>
+      <h3>2 <div :style="this.bar_fill(this.ii_star)" class="bar"></div> {{this.ii_star}}</h3>
+      <h3>1 <div :style="this.bar_fill(this.i_star)" class="bar"></div> {{this.i_star}}</h3>
     </div>
   </div>
 </template>
@@ -36,23 +38,23 @@
 export default {
   name: "TitleComponent",
   props: {
-    I_star: {
+    i_star: {
       type: Number,
       default: 0
     },
-    II_star: {
+    ii_star: {
       type: Number,
       default: 0
     },
-    III_star: {
+    iii_star: {
       type: Number,
       default: 0
     },
-    IV_star: {
+    iv_star: {
       type: Number,
       default: 0
     },
-    V_star: {
+    v_star: {
       type: Number,
       default: 0
     }
@@ -73,10 +75,10 @@ export default {
   },
   computed: {
     sum_opinion(){
-      return this.I_star + this.II_star + this.III_star + this.IV_star + this.V_star
+      return this.i_star + this.ii_star + this.iii_star + this.iv_star + this.v_star
     },
     avg_opinion (){
-      return ((this.I_star + 2*this.II_star + 3*this.III_star + 4*this.IV_star + 5*this.V_star)/this.sum_opinion).toFixed(2)
+      return ((this.i_star + 2*this.ii_star + 3*this.iii_star + 4*this.iv_star + 5*this.v_star)/this.sum_opinion).toFixed(2)
     }
   }
 }
