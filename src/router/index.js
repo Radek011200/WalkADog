@@ -15,6 +15,7 @@ import NotFoundView from "@/views/NotFoundView";
 import AccountView from "@/views/AccountView";
 import DogsView from "@/views/DogsView";
 import DogPreview from "@/views/DogPreview";
+import DogCreateView from "@/views/DogCreateView";
 
 
 Vue.use(VueRouter)
@@ -98,6 +99,11 @@ const routes = [
         component: DogPreview,
         name: 'DogsPreview',
     },
+    {
+        path: '/dog/add-dog',
+        component: DogCreateView,
+        name: 'DogsCreateView',
+    }
 ]
 
 const router = new VueRouter({

@@ -17,6 +17,7 @@ export default {
     login: "",
     password: "",
     token: "",
+    client_id: "",
   }),
   created() {
     if (localStorage.getItem("token")) {
@@ -32,13 +33,17 @@ export default {
           username: login,
           password: password,
         }
-      }).then(response => this.token = response.data.token)
+      }).then(response => {
+        this.token = response.data.token
+        this.client = response.data.client_id
+      })
           .catch(function (error) {
             if (error.response.status === 400) {
               alert("Błędny login lub hasło");
             }
           });
       localStorage.setItem("token", this.token);
+      localStorage.setItem("client_id", this.client);
       if (this.token !== "") {
         await this.$router.push("/");
       }
