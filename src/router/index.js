@@ -46,7 +46,7 @@ const routes = [
         component: NewWalkPart2,
     },
     {
-        path: '/opinion/:trainerId',
+        path: '/opinion/:trainer_id',
         name: 'Opinion',
         component: OpinionView
     },
