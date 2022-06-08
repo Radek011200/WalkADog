@@ -7,7 +7,7 @@ import AboutView from "@/views/WalkList";
 import NewWalkPart2 from "@/views/NewWalkPart2";
 import NewWalkSummary from "@/views/NewWalkSummary";
 import AddOpinion from "@/views/AddOpinion"
-import TestOpinionView from "@/views/TestOpinionView";
+import OpinionView from "@/views/OpinionView";
 import TrainersList from "@/views/TrainersList";
 import LoginView from "@/views/LoginView";
 import MapView from "@/views/MapView";
@@ -47,9 +47,9 @@ const routes = [
         component: NewWalkPart2,
     },
     {
-        path: '/test_opinion',
-        name: 'TestOpinion',
-        component: TestOpinionView
+        path: '/opinion/:trainer_id',
+        name: 'Opinion',
+        component: OpinionView
     },
     {
         path: '/new-walk-summary',
