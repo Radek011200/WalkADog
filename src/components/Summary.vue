@@ -7,7 +7,7 @@
               <v-icon :x-large=true color="white" class="" >
               mdi-dog-side
               </v-icon>
-              <div><b>{{dog.name}}</b></div>
+              <div><b>{{dog}}</b></div>
             </center>
         </v-col>
         <v-col class="important-text">
@@ -19,7 +19,7 @@
             <v-icon :x-large=true color="white" class="" >
             mdi-account
             </v-icon>
-            <div><b>{{trainer.name}}</b></div>
+            <div><b>{{trainer}}</b></div>
           </center>
         </v-col>
       </v-row>
@@ -49,14 +49,18 @@
 
   export default {
     name: 'SummaryComponent',
+    props:{
+      trainer:{
+        Type: String,
+        default: "Trener1"
+      },
+      dog:{
+        Type: String,
+        default: "Dog1"
+      },
+    },
     data () {
       return {
-        trainer: {
-          name: "Trener 1",
-        },
-        dog: {
-          name: "Max"
-        },
         date: {
           //could handle with moment.js
           dateFull: "06-05-2022 12:00",

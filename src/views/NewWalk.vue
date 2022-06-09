@@ -4,15 +4,15 @@
     <Calendar v-on:change="updateDate($event)"/>
     <v-container>
       <h3>Dostępni Trenerzy:</h3>
-      <v-list-item-group>
-        <v-list-item v-for="trainer in filteredTrainersByDate" :key="trainer.id" dense>
-          <div class="lista">
+      <v-list-item-group >
+        <v-list-item v-for="trainer in trainers" :key="trainer.url" dense v-on:click="selectedTrainer = trainer,saveTrainer(), changeSelectedTrainer(), getTrainerName()">
+          <div class="lista" >
             <v-list-item-content>
               <v-list-item-title>
                 <v-list-item-icon>
                   <v-icon size="45px">mdi-account-circle</v-icon>
                 </v-list-item-icon>
-                <span class="headline">{{ trainer.name }}</span>
+                <span class="headline">{{ trainer.first_name }}</span>
               </v-list-item-title>
             </v-list-item-content>
           </div>
@@ -23,6 +23,7 @@
       <v-btn href="/new-walk-part-2" color="success" :x-large=true rounded>Przejdź Dalej</v-btn>
     </v-card-actions>
     <v-card-actions class="justify-center">
+
 
       <v-btn text :x-large=true @click="back()">Powrót</v-btn>
 
@@ -37,60 +38,33 @@
 
 import Calendar from '../components/Calendar.vue'
 import TitleComponent from "@/components/TitleComponent";
+import axios from "axios";
 
 
 export default {
   name: 'NewWalk',
+  emits: 'change',
   components: {
     TitleComponent,
     Calendar
   },
   computed: {
-    filteredTrainersByDate() {
-      return this.trainers;
-    },
+    // filteredTrainersByDate() {
+    //   return this.trainers;
+    // },
 
   },
   created() {
     this.title = "Nowy Spacer";
+    this.showDog();
+    this.getTrainers()
   },
 
-  data() {
+  data(){
     return {
       title: 'Nowy spacer',
-      trainers: [
-        {
-          id: 1,
-          name: 'Jan',
-          surname: 'Kowalski',
-          photo: 'mdi-home',
-          available_days: ['2022-04-26'],
-        },
-        {
-          id: 2,
-          name: 'Adam',
-          surname: 'Nowak',
-          available_days: '2022-04-03',
-        },
-        {
-          id: 3,
-          name: 'Krzysztof',
-          surname: 'Kowalski',
-          available_days: '2022-04-05',
-        },
-        {
-          id: 4,
-          name: 'Krzysztof',
-          surname: 'Kowalski',
-          available_days: '2022-04-06',
-        },
-        {
-          id: 5,
-          name: 'Krzysztof',
-          surname: 'Kowalski',
-          available_days: '2022-04-08',
-        },
-      ]
+      trainers: [],
+      selectedTrainer: null
     }
   },
 
@@ -101,6 +75,49 @@ export default {
     },
     updateDate: function (updatedDate) {
       this.date = updatedDate
+      console.log(this.date)
+    },
+    saveTrainer:function (){
+      localStorage.setItem("SelectedTrainerId", this.selectedTrainer.trainer_id)
+    },
+    getTrainerName: function (){
+      localStorage.setItem("SelectedTrainerName", this.selectedTrainer.first_name)
+    },
+    showDog: function (){
+      console.log(localStorage.SelectedDogName)
+      console.log(localStorage.SelectedDogId)
+    },
+    changeSelectedTrainer(){
+      var TrainerNameList = document.getElementsByClassName("headline")
+      for(var i =0; i<TrainerNameList.length; i++){
+        TrainerNameList[i].style.color = 'black'
+        if(this.selectedTrainer.first_name === TrainerNameList[i].innerHTML){
+          TrainerNameList[i].style.color = 'green'
+        }
+      }
+    },
+    // showTrainer: function (){
+    //   console.log(localStorage.SelectedTrainer)
+    // },
+    getToken() {
+      axios({
+        method: 'post',
+        url: 'http://127.0.0.1:8000/api-token-auth/',
+        data: {
+          username: 'admin',
+          password: 'admin'
+        }
+      }).then(response => localStorage.setItem("token",response.data.token ));
+    },
+    getTrainers(){
+      axios({
+        method:'get',
+        url:'http://127.0.0.1:8000/api/trainer/',
+        headers: {
+          Authorization: 'Token ' + localStorage.token
+        }
+      }).then(response=>{this.trainers = response.data.results,console.log(response.status), console.log(response.statusText), console.log(response.data)})
+
     }
   }
 }

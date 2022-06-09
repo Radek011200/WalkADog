@@ -10,6 +10,8 @@ import AddOpinion from "@/views/AddOpinion"
 import TestOpinionView from "@/views/TestOpinionView";
 import TrainersList from "@/views/TrainersList";
 import MapView from "@/views/MapView";
+import MainViewUnderConstruction from "@/views/MainViewUnderConstruction";
+
 
 Vue.use(VueRouter)
 
@@ -63,6 +65,11 @@ const routes = [
     path: '/walk-list',
     name: 'walklist',
     component: AboutView,
+  },
+  {
+    path: '/MainViewUnderConstruction',
+    name: 'MainViewUnderConstruction',
+    component: MainViewUnderConstruction,
   },
 ]
 

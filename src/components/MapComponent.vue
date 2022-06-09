@@ -1,11 +1,7 @@
 <template>
-  <div style="height: 100%">
-    <button id='btn' @click="changeColor"
-            style="border-radius: 25px; border: 2px solid #00B300; height:5%; width:10%; top:10%; left:45%; position: relative"
-            v-on:click='remove'>Remove last
-    </button>
+  <div style="display: flex; flex-direction: column; height: 100%; align-items: center">
     <l-map @click="addMarker"
-           style=" position:relative; height: 50%; width: 20%; left: 40%; top: 15%; border-radius: 25px; border: 2px solid #00B300;"
+           style="position: fixed; height: 40%; width: 90%; max-width: 300px; border-radius: 25px; border: 2px solid #00B300;"
            :zoom="zoom" :center="center">
       <l-tile-layer :url="url">
       </l-tile-layer>
@@ -49,7 +45,6 @@ export default {
       url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
       zoom: 16,
       center: [53.759030, 20.46009],
-      markerLatLng: [53.759030, 20.46009],
       markers: [],
       polyline: {
         latlngs: [],
@@ -74,14 +69,6 @@ export default {
         this.polyline.latlngs.push(event.latlng);
         this.circle.timer.push(50);
       }
-    },
-    changeColor() {
-      document.getElementById("btn").style.backgroundColor = '#00B300';
-      document.getElementById("btn").style.color = 'white';
-      setTimeout(() => {
-        document.getElementById("btn").style.backgroundColor = 'white';
-        document.getElementById("btn").style.color = 'black';
-      }, 100);
     },
   }
 }

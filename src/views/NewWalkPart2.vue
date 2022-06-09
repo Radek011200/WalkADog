@@ -5,7 +5,7 @@
     {{ trainer.name}} - Dostępne godziny
   </v-card-actions>
   <v-card-actions class="justify-center">
-    <v-btn href="/new-walk-summary" color="success" :x-large=true rounded>Przejdź do podsumowania</v-btn>
+    <v-btn href="/map-view" color="success" :x-large=true rounded>Dalej</v-btn>
   </v-card-actions>
   <v-card-actions class="justify-center">
     <v-btn text :x-large=true @click="back()">Powrót</v-btn>
