@@ -8,7 +8,7 @@
 
 <script>
 import TitleComponent from "@/components/TitleComponent";
-import DogsList from "@/components/DogsList";
+import DogsList from "@/components/dog/DogsList";
 import axios from "axios";
 
 export default {
@@ -36,7 +36,7 @@ export default {
       }).then(response => this.dogsDataList = response.data.results)
           .catch(function (error) {
             if (error.response.status === 500) {
-              alert("Błąd serwera");
+              console.log('toDo')
             }
           });
     }

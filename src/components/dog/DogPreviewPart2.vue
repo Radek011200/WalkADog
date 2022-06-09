@@ -1,21 +1,25 @@
 <template>
-  <div v-if="active" class="container">
-    <v-img class="dog-img" src="../assets/previewDog.jpeg"/>
-    <p class="dog-text">{{ dog.name }} </p>
-    <p class="dog-text mt-2" style="font-size: 2.5em; font-weight: 450; line-height: 0;">{{ dog.breed }}</p>
-    <p class="dog-text mt-1" style="font-size: 2.5em; font-weight: 450;">{{ dog.age }} lat </p>
+  <div v-if="!active" class="container">
+    <v-img class="dog-img" :src="dog.photo"/>
     <div class="control">
-      <textarea class="textarea has-fixed-size" :value="dog.description" readonly> </textarea>
+      <span class="subtitle-dog-preview">Zachowanie</span>
+      <textarea class="textarea has-fixed-size" :value="dog.behavior" readonly> </textarea>
+      <span class="subtitle-dog-preview mt-3">Zakazy</span>
+      <textarea class="textarea has-fixed-size" :value="dog.prohibitions" readonly> </textarea>
+      <span class="subtitle-dog-preview mt-3">Zalecenia</span>
+      <textarea class="textarea has-fixed-size" :value="dog.recommendations" readonly> </textarea>
     </div>
-    <v-btn class="mt-4" color="success" @click="$emit('active')" :large=true rounded> Więcej szczegółów</v-btn>
-    <v-btn class="mt-2 green--text" text :x-large=true @click="back()">Powrót</v-btn>
+    <v-btn class="mt-2 green--text" text :x-large=true @click="$emit('active')">Powrót</v-btn>
   </div>
 </template>
 
 <script>
 
+
 export default {
-  name: "DogPreviewPart1",
+  name: "DogPreviewPart2",
+  components: {},
+
   props: {
     active: {
       type: Boolean,
@@ -26,14 +30,12 @@ export default {
       required: true,
     },
   },
-  methods: {
-    back() {
-      this.$router.push("/dogs/");
-    },
-
+  data() {
+    return {
+      title: 'Profil psa',
+      id: this.$route.params.dogId,
+    }
   },
-
-
 }
 </script>
 
@@ -87,21 +89,11 @@ export default {
   }
 }
 
-.dog-text {
-  font-family: 'Roboto';
-  font-style: normal;
-
-  font-weight: 500;
-  font-size: 3em;
-  display: flex;
-  align-items: center;
-  text-align: center;
-}
 
 .textarea {
   width: 80vw;
   height: 10vw;
-  text-align: center;
+
   font-weight: 700;
   font-size: 1.3em;
   min-height: 2em;
@@ -111,8 +103,19 @@ export default {
 }
 
 .textarea:not([rows]) {
-  min-height: 5em;
+  min-height: 4em;
   max-height: 6em;
   max-width: 40em;
+}
+
+.subtitle-dog-preview {
+  font-family: 'Roboto';
+  font-style: normal;
+
+  display: flex;
+  align-items: center;
+  text-align: center;
+
+  color: #7A7A7A;
 }
 </style>
