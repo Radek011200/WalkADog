@@ -23,6 +23,24 @@ export default {
     if (localStorage.getItem("token")) {
       this.$router.push("/");
     }
+    if (localStorage.getItem('logout') !== 'null') {
+      this.$toast.warning("Wylogowano pomyślnie!", {
+        position: "top-right",
+        timeout: 4718,
+        closeOnClick: true,
+        pauseOnFocusLoss: true,
+        pauseOnHover: true,
+        draggable: true,
+        draggablePercent: 1,
+        showCloseButtonOnHover: false,
+        hideProgressBar: true,
+        closeButton: "button",
+        icon: true,
+        rtl: false,
+      });
+
+    }
+    localStorage.setItem('logout', 'null')
   },
   methods: {
     async getToken(login, password) {
@@ -44,7 +62,9 @@ export default {
           });
       localStorage.setItem("token", this.token);
       localStorage.setItem("client_id", this.client);
+
       if (this.token !== "") {
+        localStorage.setItem("logged", 'true');
         await this.$router.push("/");
       }
     },
