@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container style="display: flex; flex-direction: column">
     <v-container class="summary-box">
       <v-row>
         <v-col class="important-text">
@@ -7,7 +7,7 @@
               <v-icon :x-large=true color="white" class="" >
               mdi-dog-side
               </v-icon>
-              <div><b>{{dog.name}}</b></div>
+              <div><b>{{dog}}</b></div>
             </center>
         </v-col>
         <v-col class="important-text">
@@ -19,28 +19,32 @@
             <v-icon :x-large=true color="white" class="" >
             mdi-account
             </v-icon>
-            <div><b>{{trainer.name}}</b></div>
+            <div><b>{{trainer}}</b></div>
           </center>
         </v-col>
       </v-row>
     </v-container>
     <v-container>
-      <v-row>
+      <v-container style="display: flex; flex-direction: column; align-content: center; padding: 0">
+        <center>
         <v-col>
           Dzień
         </v-col>
-        <v-col style="text-align: right;">
+        <v-col>
           {{date.dateCalendar}}
         </v-col>
-      </v-row>
-      <v-row no-gutters>
+        </center>
+      </v-container>
+      <v-container style="display: flex; flex-direction: column; align-content: center; padding: 0">
+        <center>
         <v-col>
           Godziny
         </v-col>
-        <v-col style="text-align: right;">
+        <v-col>
           {{date.timeClockStart}} - {{date.timeClockEnd}}
         </v-col>
-      </v-row>
+        </center>
+      </v-container>
     </v-container>
   </v-container>
 </template>
@@ -49,20 +53,22 @@
 
   export default {
     name: 'SummaryComponent',
+    props:{
+      trainer:{
+        Type: String,
+        default: "Trener1"
+      },
+      dog:{
+        Type: String,
+        default: "Dog1"
+      },
+    },
     data () {
       return {
-        trainer: {
-          name: "Trener 1",
-        },
-        dog: {
-          name: "Max"
-        },
         date: {
-          //could handle with moment.js
-          dateFull: "06-05-2022 12:00",
-          dateCalendar: "06-05-2022",
-          timeClockStart: "12:00",
-          timeClockEnd: "13:00"
+          dateCalendar: localStorage.getItem("SelectedData"),
+          timeClockStart: localStorage.getItem("SelectedStartHour"),
+          timeClockEnd: localStorage.getItem("SelectedEndHour"),
         }
       }
       },

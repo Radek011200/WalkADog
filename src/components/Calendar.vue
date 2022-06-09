@@ -24,7 +24,7 @@
       return {
         picker: new Date().toISOString().substr(0, 10),
       }
-      },
+    },
     methods: {
         getMonthFormat: function (date) {
           return date.toLocaleString('default', { month: 'long' })
@@ -38,7 +38,7 @@
         updateDate: function(updatedDate) {
         this.date = updatedDate
         this.$emit('change', this.date)
-        } ,
+        },
       }
   }
 

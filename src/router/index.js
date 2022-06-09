@@ -1,16 +1,15 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import NewWalk from "@/views/NewWalk";
+import NewWalk from "@/views/CreateWalk/NewWalk";
 import MainView from "@/views/MainView";
 import AboutView from "@/views/WalkList";
-import NewWalkPart2 from "@/views/NewWalkPart2";
-import NewWalkSummary from "@/views/NewWalkSummary";
+import NewWalkSummary from "@/views/CreateWalk/NewWalkSummary";
 import AddOpinion from "@/views/AddOpinion"
 import OpinionView from "@/views/OpinionView";
 import TrainersList from "@/views/TrainersList";
+import MapView from "@/views/CreateWalk/MapView";
 import LoginView from "@/views/LoginView";
-import MapView from "@/views/MapView";
 import NotFoundView from "@/views/NotFoundView";
 import AccountView from "@/views/client/AccountView";
 import DogsView from "@/views/dog/DogsView";
@@ -42,11 +41,6 @@ const routes = [
         path: '/about',
         name: 'about',
         component: AboutView,
-    },
-    {
-        path: '/new-walk-part-2',
-        name: 'NewWalkPart2',
-        component: NewWalkPart2,
     },
     {
         path: '/opinion/:trainer_id',
