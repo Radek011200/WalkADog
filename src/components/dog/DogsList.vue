@@ -37,7 +37,9 @@ export default {
 <style scoped>
 .container {
 
-
+  margin-left: auto;
+  margin-right: auto;
+  padding: 12px;
   margin-bottom: 1.5rem;
   gap: 15px;
 

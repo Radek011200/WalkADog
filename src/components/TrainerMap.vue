@@ -1,5 +1,5 @@
 <template>
-    <h1 style="position: relative; top:5%; left: 46%"><img :src = "image" style="height: 40px; width: 40px"/>{{ TrainerName }}</h1>
+    <h1><img :src = "image" style="height: 40px; width: 40px"/>{{ TrainerName }}</h1>
 </template>
 
 <script>
