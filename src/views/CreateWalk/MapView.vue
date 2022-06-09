@@ -14,6 +14,7 @@ import TitleComponent from "@/components/TitleComponent";
 import MapComponent from "@/components/MapComponent"
 import DogMap from "@/components/DogMap"
 import TrainerMap from "@/components/TrainerMap"
+
 export default {
   name: "NewWalkPart2",
   components: {
@@ -40,5 +41,7 @@ export default {
 </script>
 
 <style scoped>
-
+.container {
+  position: unset;
+}
 </style>

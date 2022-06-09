@@ -3,14 +3,14 @@
 
     <div class="walk" outlined>
 
-      <p class="item"><b>{{dog_name}}</b></p>
+      <p class="item"><b>{{ dog_name }}</b></p>
       <p>|</p>
-      <p class="item">{{start_hour}}</p>
+      <p class="item">{{ start_hour }}</p>
       <p>:</p>
-      <p class="item">{{end_hour}}</p>
+      <p class="item">{{ end_hour }}</p>
       <p>|</p>
       <v-icon size="50px" style="position: relative; top: 5px;">mdi-information-variant</v-icon>
-      <v-icon size="50px"  style="position: relative; top: 5px;">mdi-map</v-icon>
+      <v-icon size="50px" style="position: relative; top: 5px;">mdi-map</v-icon>
 
 
     </div>
@@ -40,16 +40,15 @@ export default {
   data() {
     return {
       title: 'Nowy spacer',
-      trainers: [
-      ]
+      trainers: []
     }
   }
 }
 </script>
 
-<style>
+<style scoped>
 
-.walk{
+.walk {
   width: fit-content;
   align-items: center;
   justify-content: center;
@@ -64,11 +63,13 @@ export default {
   align-items: baseline;
   padding: 0 10px 0 10px
 }
-.vl{
+
+.vl {
   border-left: 3px solid black;
   height: 500px;
 }
-.item{
+
+.item {
   justify-content: space-between;
   padding: 5px;
 }

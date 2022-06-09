@@ -4,13 +4,14 @@
     <Calendar v-on:change="updateDate($event)"/>
     <v-container v-if="czyWybranoTrenera">
       <h3>Dostępni Trenerzy:</h3>
-      <v-list-item-group >
-        <v-list-item v-for="trainer in trainers" :key="trainer.url" dense v-on:click="selectedTrainer = trainer,saveTrainer(), changeSelectedTrainer(), getTrainerName(),getAvailability(), letDisplayAvailability()">
-          <div class="lista" >
+      <v-list-item-group>
+        <v-list-item v-for="trainer in trainers" :key="trainer.url" dense
+                     v-on:click="selectedTrainer = trainer,saveTrainer(), changeSelectedTrainer(), getTrainerName(),getAvailability(), letDisplayAvailability()">
+          <div class="lista">
             <v-list-item-content>
               <v-list-item-title>
                 <v-list-item-icon>
-                  <img :src = "trainer.photo" style="height: 40px; width: 40px"/>
+                  <img :src="trainer.photo" style="height: 40px; width: 40px"/>
                 </v-list-item-icon>
                 <span class="headline">{{ trainer.first_name }}</span>
               </v-list-item-title>
@@ -20,12 +21,13 @@
       </v-list-item-group>
     </v-container>
     <v-container v-if="!czyWybranoTrenera">
-      <v-list-item-group >
-        <v-list-item v-for="godzina in this.availability" :key="godzina.id" dense v-on:click="selectedStartHour=godzina, saveDateAndHour(), displayHour()" >
+      <v-list-item-group>
+        <v-list-item v-for="godzina in this.availability" :key="godzina.id" dense
+                     v-on:click="selectedStartHour=godzina, saveDateAndHour(), displayHour()">
           <div class="lista">
             <v-list-item-content>
               <v-list-item-title>
-                <span class="headline">{{ parseInt(godzina) }}:00 - {{ parseInt(godzina) +1 }}:00</span>
+                <span class="headline">{{ parseInt(godzina) }}:00 - {{ parseInt(godzina) + 1 }}:00</span>
               </v-list-item-title>
             </v-list-item-content>
           </div>
@@ -59,23 +61,21 @@ export default {
     TitleComponent,
     Calendar
   },
-  computed: {
-
-  },
+  computed: {},
   created() {
     this.title = "Nowy Spacer";
     this.showDog();
     this.getTrainers()
   },
 
-  data(){
+  data() {
     return {
       title: 'Nowy spacer',
       trainers: [],
       selectedTrainer: null,
       czyWybranoTrenera: 1,
-      availability:[],
-      selectedStartHour:null,
+      availability: [],
+      selectedStartHour: null,
       data: localStorage.getItem("SelectedData"),
       godzina: console.log(localStorage.getItem("SelectedStartHour"))
     }
@@ -86,7 +86,7 @@ export default {
     back() {
       this.$router.go(-1)
     },
-    displayHour: function (){
+    displayHour: function () {
       console.log(localStorage.getItem("SelectedStartHour"))
       console.log(localStorage.getItem("SelectedEndHour"))
       console.log(localStorage.getItem("SelectedData"))
@@ -95,30 +95,30 @@ export default {
       this.date = updatedDate
       console.log(this.date)
     },
-    saveTrainer:function (){
+    saveTrainer: function () {
       localStorage.setItem("SelectedTrainerId", this.selectedTrainer.trainer_id)
       localStorage.setItem("SelectedTrainerImage", this.selectedTrainer.photo)
     },
-    saveDateAndHour: function (){
+    saveDateAndHour: function () {
       localStorage.setItem("SelectedStartHour", this.selectedStartHour)
-      localStorage.setItem("SelectedEndHour", String(parseInt(this.selectedStartHour)+1)+":00")
+      localStorage.setItem("SelectedEndHour", String(parseInt(this.selectedStartHour) + 1) + ":00")
       localStorage.setItem("SelectedData", this.date)
     },
-    letDisplayAvailability: function (){
+    letDisplayAvailability: function () {
       this.czyWybranoTrenera = 0
     },
-    getTrainerName: function (){
+    getTrainerName: function () {
       localStorage.setItem("SelectedTrainerName", this.selectedTrainer.first_name)
     },
-    showDog: function (){
+    showDog: function () {
       console.log(localStorage.SelectedDogName)
       console.log(localStorage.SelectedDogId)
     },
-    changeSelectedTrainer(){
+    changeSelectedTrainer() {
       var TrainerNameList = document.getElementsByClassName("headline")
-      for(var i =0; i<TrainerNameList.length; i++){
+      for (var i = 0; i < TrainerNameList.length; i++) {
         TrainerNameList[i].style.color = 'black'
-        if(this.selectedTrainer.first_name === TrainerNameList[i].innerHTML){
+        if (this.selectedTrainer.first_name === TrainerNameList[i].innerHTML) {
           TrainerNameList[i].style.color = 'green'
         }
       }
@@ -131,31 +131,35 @@ export default {
           username: 'admin',
           password: 'admin'
         }
-      }).then(response => localStorage.setItem("token",response.data.token ));
+      }).then(response => localStorage.setItem("token", response.data.token));
     },
-    getTrainers(){
+    getTrainers() {
       axios({
-        method:'get',
-        url:'http://127.0.0.1:8000/api/trainer/',
+        method: 'get',
+        url: 'http://127.0.0.1:8000/api/trainer/',
         headers: {
           Authorization: 'Token ' + localStorage.token
         }
-      }).then(response=>{this.trainers = response.data.results,console.log(response.status), console.log(response.statusText), console.log(response.data)})
+      }).then(response => {
+        this.trainers = response.data.results, console.log(response.status), console.log(response.statusText), console.log(response.data)
+      })
 
     },
-    getAvailability(){
+    getAvailability() {
       axios({
-      method:'get',
-      url:`http://127.0.0.1:8000/api/availability/get_availability?trainer_id=${this.selectedTrainer.trainer_id}&date=2022-06-16`,
-      headers: {
-      Authorization: 'Token ' + localStorage.token
-      }
-    }).then(response=>{this.availability = response.data.available_hours})
+        method: 'get',
+        url: `http://127.0.0.1:8000/api/availability/get_availability?trainer_id=${this.selectedTrainer.trainer_id}&date=2022-06-16`,
+        headers: {
+          Authorization: 'Token ' + localStorage.token
+        }
+      }).then(response => {
+        this.availability = response.data.available_hours
+      })
     }
   },
 }
 </script>
-<style>
+<style scoped>
 .v-list-item__title {
   font-size: 22px;
 }

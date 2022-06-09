@@ -2,16 +2,17 @@
   <v-responsive>
     <v-container :fluid="true" class="container">
       <v-container class="FigmaMainView">
-        <v-container class = "column">Wybór zwierzaka</v-container>
+        <v-container class="column">Wybór zwierzaka</v-container>
         <v-list-item v-for="dog in this.dogs" :key="dog.url" dense>
           <ChoseAPet :pet="dog"></ChoseAPet>
         </v-list-item>
       </v-container>
     </v-container>
-    <v-list-item v-for="walk in this.walks_present" :key="walk.id" dense >
+    <v-list-item v-for="walk in this.walks_present" :key="walk.id" dense>
       <v-list-item-content>
         <v-list-item-title>
-          <planned-walks :dog_name="walk.dog.name" :start_hour="walk.start_hour" :end_hour="walk.end_hour"></planned-walks>
+          <planned-walks :dog_name="walk.dog.name" :start_hour="walk.start_hour"
+                         :end_hour="walk.end_hour"></planned-walks>
         </v-list-item-title>
       </v-list-item-content>
     </v-list-item>
@@ -25,6 +26,7 @@
 import ChoseAPet from "@/components/ChoseAPet";
 import axios from 'axios';
 import PlannedWalks from "@/components/PlannedWalks";
+
 export default {
   name: 'MainViewUnderConstruction',
   components: {
@@ -33,30 +35,11 @@ export default {
   },
 
 
-
   created() {
     this.title = "Lista Spacerów";
     this.getToken();
     this.getDogs();
     this.getGroupedWalks()
-    if (localStorage.getItem('logged') !== 'null') {
-      this.login_bool = true;
-      this.$toast.success("Zalogowano pomyślnie!", {
-        position: "top-right",
-        timeout: 4718,
-        closeOnClick: true,
-        pauseOnFocusLoss: true,
-        pauseOnHover: true,
-        draggable: true,
-        draggablePercent: 1,
-        showCloseButtonOnHover: false,
-        hideProgressBar: true,
-        closeButton: "button",
-        icon: true,
-        rtl: false,
-      });
-    }
-    localStorage.setItem('logged', 'null')
   },
   mounted() {
   },
@@ -81,7 +64,7 @@ export default {
           username: 'admin',
           password: 'admin'
         }
-      }).then(response => localStorage.setItem("token",response.data.token ));
+      }).then(response => localStorage.setItem("token", response.data.token));
     },
     getDogs: function () {
       axios({
@@ -91,7 +74,9 @@ export default {
         headers: {
           Authorization: 'Token ' + localStorage.token
         }
-      }).then(response => {this.dogs = response.data, console.log(response.status), console.log(response.statusText), console.log(response.data)});
+      }).then(response => {
+        this.dogs = response.data, console.log(response.status), console.log(response.statusText), console.log(response.data)
+      });
     },
     async getWalks() {
       await axios({
@@ -105,16 +90,14 @@ export default {
     groupWalk(walk) {
       const now = new Date();
       const walk_date_start = new Date(walk.date);
-      walk_date_start.setHours(Number(walk.start_hour.substring(0,2)));
+      walk_date_start.setHours(Number(walk.start_hour.substring(0, 2)));
       const walk_date_end = new Date(walk.date);
-      walk_date_end.setHours(Number(walk.end_hour.substring(0,2)));
-      if (now<walk_date_start){
+      walk_date_end.setHours(Number(walk.end_hour.substring(0, 2)));
+      if (now < walk_date_start) {
         this.walks_future.push(walk);
-      }
-      else if (now>walk_date_end){
+      } else if (now > walk_date_end) {
         this.walks_past.push(walk);
-      }
-      else {
+      } else {
         this.walks_present.push(walk);
       }
     },
@@ -130,8 +113,8 @@ export default {
 
 </script>
 
-<style>
-.FigmaMainView{
+<style scoped>
+.FigmaMainView {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -146,14 +129,16 @@ export default {
 .lista {
   display: flex;
 }
-.container{
+
+.container {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.column{
+
+.column {
   position: absolute;
-  top:20px;
+  top: 20px;
 
 }
 
