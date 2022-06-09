@@ -1,6 +1,6 @@
 <template>
   <div v-if="!active" class="container">
-    <v-img class="dog-img" src="../assets/previewDog.jpeg"/>
+    <v-img class="dog-img" :src="dog.photo"/>
     <div class="control">
       <span class="subtitle-dog-preview">Zachowanie</span>
       <textarea class="textarea has-fixed-size" :value="dog.description" readonly> </textarea>

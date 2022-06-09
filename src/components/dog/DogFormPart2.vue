@@ -2,9 +2,9 @@
   <div class="container">
     <v-img class="dog-img" v-bind:src="photo"/>
 
-    <textarea class="textarea has-fixed-size mt-4" v-model="form.temp1" placeholder="Zachowanie"></textarea>
-    <textarea class="textarea has-fixed-size mt-4" v-model="form.temp2" placeholder="Zakazy"></textarea>
-    <textarea class="textarea has-fixed-size mt-4" v-model="form.temp3" placeholder="Zalecenia"></textarea>
+    <textarea class="textarea has-fixed-size mt-4" v-model="formCopy.behavior" placeholder="Zachowanie"></textarea>
+    <textarea class="textarea has-fixed-size mt-4" v-model="formCopy.prohibitions" placeholder="Zakazy"></textarea>
+    <textarea class="textarea has-fixed-size mt-4" v-model="formCopy.recommendation" placeholder="Zalecenia"></textarea>
     <v-btn class="mt-4" color="success" @click=save() :large=true rounded>Zapisz</v-btn>
     <v-btn class="green--text" text :x-large=true @click="checkForm()" rounded>Powrót</v-btn>
 
@@ -16,10 +16,10 @@ export default {
   name: "DogFormPart2",
   data() {
     return {
-      form: {
-        temp1: "",
-        temp2: "",
-        temp3: "",
+      formCopy: {
+        behavior: "",
+        prohibitions: "",
+        recommendation: "",
       },
     }
   },
@@ -28,16 +28,32 @@ export default {
       type: String,
       required: false,
     },
+    form: {
+      type: Object,
+      default: () => ({
+        behavior: "",
+        prohibitions: "",
+        recommendation: "",
+      })
+    },
+  },
+  watch: {
+    form(newVal) {
+      this.formCopy = newVal;
+    }
   },
   methods: {
     checkForm() {
       this.$emit("back-to-first-form", this.form);
     },
+    onInput(newInputValue) {
+      this.$emit('change-form-values', newInputValue)
+    },
     save() {
-      if (this.form.temp1 === "") {
+      if (this.formCopy.behavior === "" || this.formCopy.prohibitions === "" || this.formCopy.recommendation === "") {
         alert("Wypełnij wszystkie pola");
       } else {
-        this.$emit("change-form", this.form);
+        this.$emit("save", this.formCopy);
       }
     }
   },

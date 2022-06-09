@@ -4,15 +4,15 @@
     <div class="asd">
       <v-img class="dog-photo"
              v-bind:src=dog.photo></v-img>
-      <!--      DO ZMIANY KIEDY BEDZIE FIX Z API-->
-      <!--      <v-img class="dog-photo" v-bind:src=dog.photo max-width="15%"></v-img>-->
       <p class="dog-name">{{ dog.name }} |</p>
       <div></div>
       <div>
         <v-btn icon v-bind:href="'/dogs/'+dog.dog_id" color="success" class="dog-link">
           <v-icon large class="info-icon" color="white">mdi-information-variant</v-icon>
         </v-btn>
-        <v-icon large class="edit-icon" color="gray" style="opacity: 0.89;">mdi-pencil</v-icon>
+        <v-btn icon v-bind:href="'/dogs/'+dog.dog_id+'/edit'" color="success" class="dog-link" :data-id="dog.dog_id">
+          <v-icon large class="edit-icon" color="white" style="opacity: 60%">mdi-pencil</v-icon>
+        </v-btn>
       </div>
     </div>
   </div>

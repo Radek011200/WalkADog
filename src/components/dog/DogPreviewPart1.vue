@@ -1,6 +1,6 @@
 <template>
   <div v-if="active" class="container">
-    <v-img class="dog-img" src="../assets/previewDog.jpeg"/>
+    <v-img class="dog-img" :src="dog.photo"/>
     <p class="dog-text">{{ dog.name }} </p>
     <p class="dog-text mt-2" style="font-size: 2.5em; font-weight: 450; line-height: 0;">{{ dog.breed }}</p>
     <p class="dog-text mt-1" style="font-size: 2.5em; font-weight: 450;">{{ dog.age }} lat </p>
