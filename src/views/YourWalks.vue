@@ -3,10 +3,9 @@
 <TitleComponent :title="title"></TitleComponent>
 <Calendar></Calendar>
 <h2>Zaplanowane Spacery</h2>
-<PlannedWalks></PlannedWalks>
 <v-list-item v-for="walk in this.walks" :key="walk.url" dense>
   <v-list-item-content class="lista">
-      <PlannedWalks :id="walk.id" :dog_name="walk.dog.name" :start_hour="walk.start_hour" :end_hour="walk.end_hour"></PlannedWalks>
+      <PlannedWalks :id="walk.id" :dog_name="walk.dog_name" :start_hour="walk.start_hour" :end_hour="walk.end_hour"></PlannedWalks>
   </v-list-item-content>
   </v-list-item>
       <v-btn class="center" href="/walk-list" color="success" :large=true rounded>
@@ -43,7 +42,14 @@
     data() {
       return {
         title: 'Lista Spacerów',
-        walks: []
+        walks: [    
+          {
+            id: 1,
+            dog_name: 'Jan',
+            start_hour: '10:00',
+            end_hour: '12:00',
+          },
+        ]
       }
     },
 

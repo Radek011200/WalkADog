@@ -16,12 +16,9 @@
     <span>
     <input class="bigger" v-model="password" placeholder="Hasło" />
     </span>
-    <span>
-    <input v-model="upload" placeholder="Dodaj zdjecie" />
-    </span>
     </div>
     <v-card-actions class="justify-center">
-    <v-btn type="submit" color="success" :x-large=true rounded>Przejdź dalej</v-btn>
+    <v-btn type="submit" color="success" :x-large=true rounded>Zarejestruj</v-btn>
     </v-card-actions>
 </form>
     <v-card-actions class="justify-center" >
@@ -75,7 +72,9 @@ export default {
 input{
   text-align: center;
   border-style: solid;
+  border-radius: 20px;
   padding: 5px;
+  background-color: rgb(218, 219, 215);
   margin: auto;
 }
 span{

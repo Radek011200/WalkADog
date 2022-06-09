@@ -1,26 +1,20 @@
 <template>
   <div>
-    <v-container>
-      <v-layout row wrap>
-        <v-flex xs12>
-          <v-card class="walk" outlined>          
-            <v-card-text>
-                <v-container>
-                        <div class="lista">
-                            <p><b>{{dog_name}}</b></p>
-                            <p>{{start_hour}}</p>
-                            <p>{{end_hour}}</p>
+
+          <div class="walk" outlined>          
+
+                            <p class="item"><b>{{dog_name}}</b></p>
+                            <p>|</p>
+                            <p class="item">{{start_hour}}</p>
+                            <p>:</p>
+                            <p class="item">{{end_hour}}</p>
+                            <p>|</p>
                             <v-icon size="50px">mdi-information-variant</v-icon>
                             <v-icon size="50px">mdi-map</v-icon>
-                        </div>
-                </v-container>
-            </v-card-text>
-            <v-card-actions class="lista">
-            </v-card-actions>
-          </v-card>
-        </v-flex>
-      </v-layout>
-      </v-container>
+
+
+          </div>
+
   </div>
 </template>
 
@@ -41,21 +35,44 @@ export default {
       type: String,
       default: "End Hour"
     },
-  }
+  },
+
+    data() {
+      return {
+        title: 'Nowy spacer',
+        trainers: [
+        ]
+      }
+    }
 }
 </script>
 
 <style>
 
 .walk{
-    width: 50%;
+    width: 60%;
     height: 70%;
-    display: inline;
+    align-items: center;
     justify-content: center;
+    display: flex;
+    justify-content: center;
+    background: #4caf50;
+    border-radius: 20px;
+    margin: auto;
+    justify-content: space-between;
+    color: white;
+    font-size: 2em;
+    font-weight: 500;
+    text-align: center;
+    align-items: baseline;
+    padding: 0 10px 0 10px
 }
-
-.lista {
-    width: 50%;
+.vl{
+  border-left: 3px solid black;
+  height: 500px;
+}
+.item{
+  justify-content: space-between;
 }
 
 </style>

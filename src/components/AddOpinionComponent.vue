@@ -21,7 +21,7 @@
 
 <script>
 
-import axios from 'axios';
+// import axios from 'axios';
 import StarRating from 'vue-star-rating';
 
 export default {
@@ -39,15 +39,21 @@ export default {
     back() {
       this.$router.go(-1)
     },
-    postData()
-    {
-      axios.post('/opinion', this.opinions)
-      .then((response) => {
-        console.log(response);
-      });
+    // postData(){ 
+    // axios({
+    //   method: 'post',
+    //   url: 'http://localhost:8000/api/opinions/',
+    //   headers: {
+    //     Authorization 
+    //   }
+    //   axios.post('/opinion', this.opinions)
+    //   .then((response) => {
+    //     console.log(response);
+    //   });
+    
     },
   }
-}
+
 </script>
 
 <style>
