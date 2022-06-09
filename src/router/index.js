@@ -63,7 +63,7 @@ const routes = [
         component: NewWalkSummary,
     },
     {
-        path: '/add-opinion',
+        path: '/add-opinion/:walk_id/:trainer_id',
         name: 'AddOpinon',
         component: AddOpinion,
     },

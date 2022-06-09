@@ -17,22 +17,21 @@
   <div v-if="toggle === 0">
     <v-list-item v-for="walk in this.walks_future" :key="walk.walk_id" dense>
       <v-list-item-content class="lista">
-        <WalkEntry :mode="0" :id="walk.walk_id" :review="walk.review" :dog_name="walk.dog.name" :date="walk.date" :start_hour="walk.start_hour" :end_hour="walk.end_hour" :trainer="walk.trainer.first_name + ' ' + walk.trainer.last_name"></WalkEntry>
+        <WalkEntry :mode="0" :id="walk.walk_id" :trainer_id="walk.trainer.trainer_id" :review="walk.review" :dog_name="walk.dog.name" :date="walk.date" :start_hour="walk.start_hour" :end_hour="walk.end_hour" :trainer="walk.trainer.first_name + ' ' + walk.trainer.last_name"></WalkEntry>
       </v-list-item-content>
     </v-list-item>
   </div>
-
   <div v-if="toggle === 1">
     <v-list-item v-for="walk in this.walks_present" :key="walk.walk_id" dense>
       <v-list-item-content class="lista">
-        <WalkEntry :mode="1" :id="walk.walk_id" :review="walk.review" :dog_name="walk.dog.name" :date="walk.date" :start_hour="walk.start_hour" :end_hour="walk.end_hour" :trainer="walk.trainer.first_name + ' ' + walk.trainer.last_name"></WalkEntry>
+        <WalkEntry :mode="1" :id="walk.walk_id" :trainer_id="walk.trainer.trainer_id" :review="walk.review" :dog_name="walk.dog.name" :date="walk.date" :start_hour="walk.start_hour" :end_hour="walk.end_hour" :trainer="walk.trainer.first_name + ' ' + walk.trainer.last_name"></WalkEntry>
       </v-list-item-content>
     </v-list-item>
   </div>
   <div v-if="toggle === 2">
     <v-list-item v-for="walk in this.walks_past" :key="walk.walk_id" dense>
       <v-list-item-content class="lista">
-        <WalkEntry :mode="2" :id="walk.walk_id" :review="walk.review" :dog_name="walk.dog.name" :date="walk.date" :start_hour="walk.start_hour" :end_hour="walk.end_hour" :trainer="walk.trainer.first_name + ' ' + walk.trainer.last_name"></WalkEntry>
+        <WalkEntry :mode="2" :id="walk.walk_id" :trainer_id="walk.trainer.trainer_id" :review="walk.review" :dog_name="walk.dog.name" :date="walk.date" :start_hour="walk.start_hour" :end_hour="walk.end_hour" :trainer="walk.trainer.first_name + ' ' + walk.trainer.last_name"></WalkEntry>
       </v-list-item-content>
     </v-list-item>
   </div>

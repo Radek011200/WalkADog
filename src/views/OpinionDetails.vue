@@ -19,7 +19,7 @@
           mdi-star
         </v-icon>
       </div>
-      <v-textarea class="text" auto-grow disabled :value="this.review.comment" ></v-textarea>
+      <v-textarea class="text" filled auto-grow disabled :value="this.review.comment" ></v-textarea>
     </div>
     <v-card-actions class="justify-center">
       <v-btn text :x-large=true @click="back()">Powrót</v-btn>

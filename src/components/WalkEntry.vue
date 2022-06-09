@@ -77,6 +77,9 @@ export default {
       type: String,
       default: "Trainer"
     },
+    trainer_id:{
+      type: Number
+    },
     mode: {
       type: Number,
       default: 0
@@ -100,6 +103,7 @@ export default {
       if(this.review === null)
       {
         console.log("brak review")
+        this.$router.push("/add-opinion/"+String(this.id)+"/"+String(this.trainer_id))
       }
       else{
         this.$router.push("/opinion_details/"+String(this.review))
