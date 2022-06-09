@@ -1,7 +1,6 @@
 <template>
   <div>
     <title-component :title="title"></title-component>
-    {{ dogData }}
     <dog-preview-part1
         @active="togglePreview"
         :dog="dogData"
