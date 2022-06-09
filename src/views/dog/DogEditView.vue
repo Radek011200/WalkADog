@@ -12,6 +12,7 @@
         @back-to-first-form="toggleForm(formPart2)"
         @save="save($event)"
         :photo="form.photo"
+        :form="dogData"
 
     />
 
@@ -79,12 +80,11 @@ export default {
       const form = this.form
       console.log(formPart2)
       console.log('Token ' + localStorage.token)
-      const json = JSON.stringify({...form, ...formPart2, ...this.client_id});
-      console.log(json)
+      const data = {...form, ...formPart2, ...this.client_id};
       axios({
-        method: 'post',
-        url: 'http://127.0.0.1:8000/api/dog/',
-        data: json,
+        method: 'patch',
+        url: 'http://127.0.0.1:8000/api/dog/' + this.id + "/",
+        data: data,
         headers: {
           Authorization: 'Token ' + localStorage.token
         },

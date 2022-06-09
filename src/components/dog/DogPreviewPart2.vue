@@ -3,11 +3,11 @@
     <v-img class="dog-img" :src="dog.photo"/>
     <div class="control">
       <span class="subtitle-dog-preview">Zachowanie</span>
-      <textarea class="textarea has-fixed-size" :value="dog.description" readonly> </textarea>
+      <textarea class="textarea has-fixed-size" :value="dog.behavior" readonly> </textarea>
       <span class="subtitle-dog-preview mt-3">Zakazy</span>
-      <textarea class="textarea has-fixed-size" :value="dog.description" readonly> </textarea>
+      <textarea class="textarea has-fixed-size" :value="dog.prohibitions" readonly> </textarea>
       <span class="subtitle-dog-preview mt-3">Zalecenia</span>
-      <textarea class="textarea has-fixed-size" :value="dog.description" readonly> </textarea>
+      <textarea class="textarea has-fixed-size" :value="dog.recommendations" readonly> </textarea>
     </div>
     <v-btn class="mt-2 green--text" text :x-large=true @click="$emit('active')">Powrót</v-btn>
   </div>

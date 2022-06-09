@@ -4,7 +4,8 @@
 
     <textarea class="textarea has-fixed-size mt-4" v-model="formCopy.behavior" placeholder="Zachowanie"></textarea>
     <textarea class="textarea has-fixed-size mt-4" v-model="formCopy.prohibitions" placeholder="Zakazy"></textarea>
-    <textarea class="textarea has-fixed-size mt-4" v-model="formCopy.recommendation" placeholder="Zalecenia"></textarea>
+    <textarea class="textarea has-fixed-size mt-4" v-model="formCopy.recommendations"
+              placeholder="Zalecenia"></textarea>
     <v-btn class="mt-4" color="success" @click=save() :large=true rounded>Zapisz</v-btn>
     <v-btn class="green--text" text :x-large=true @click="checkForm()" rounded>Powrót</v-btn>
 
@@ -19,7 +20,7 @@ export default {
       formCopy: {
         behavior: "",
         prohibitions: "",
-        recommendation: "",
+        recommendations: "",
       },
     }
   },
@@ -33,7 +34,7 @@ export default {
       default: () => ({
         behavior: "",
         prohibitions: "",
-        recommendation: "",
+        recommendations: "",
       })
     },
   },
@@ -50,7 +51,7 @@ export default {
       this.$emit('change-form-values', newInputValue)
     },
     save() {
-      if (this.formCopy.behavior === "" || this.formCopy.prohibitions === "" || this.formCopy.recommendation === "") {
+      if (this.formCopy.behavior === "" || this.formCopy.prohibitions === "" || this.formCopy.recommendations === "") {
         alert("Wypełnij wszystkie pola");
       } else {
         this.$emit("save", this.formCopy);
