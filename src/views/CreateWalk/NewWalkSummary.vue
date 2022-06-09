@@ -5,11 +5,10 @@
       <b>Podsumowanie</b>
   </v-card-actions>
   <v-card-actions class="justify-center">
-    <Summary :></Summary>
+    <Summary :trainer="trainer" :dog="dog"></Summary>
   </v-card-actions>
-  
   <v-card-actions class="justify-center">
-    <v-btn href="/new-walk-summary" color="success" :x-large=true rounded v-on:click="postAWalk()">Zatwierdź</v-btn>
+    <v-btn color="success" :x-large=true rounded v-on:click="postAWalk(), postCords()">Zatwierdź</v-btn>
   </v-card-actions>
   <v-card-actions class="justify-center">
     <v-btn text :x-large=true @click="back()">Powrót</v-btn>
@@ -33,14 +32,13 @@
       return {
         title: "Nowy spacer",
         date: {
-          //could handle with moment.js
-          dateFull: "06-05-2022 12:00",
-          dateCalendar: "2022-06-05",
-          timeClockStart: "12:00",
-          timeClockEnd: "13:00"
+          dateCalendar: localStorage.getItem("SelectedData"),
+          timeClockStart: localStorage.getItem("SelectedStartHour"),
+          timeClockEnd: localStorage.getItem("SelectedEndHour"),
         },
-        trainer:localStorage.getItem("SelectedTrainerName"),
-        dog:localStorage.getItem("SelectedDogName")
+        trainer: localStorage.getItem("SelectedTrainerName"),
+        dog: localStorage.getItem("SelectedDogName"),
+        markers: localStorage.getItem("Markers")
       }
     },
     methods: {
@@ -55,42 +53,46 @@
             username: 'admin',
             password: 'admin'
           }
-        }).then(response => localStorage.setItem("token",response.data.token ));
+        }).then(response => localStorage.setItem("token", response.data.token));
       },
-      postAWalk: function (){
+      postAWalk: function () {
         axios({
           method: 'post',
           url: 'http://127.0.0.1:8000/api/walks/',
-          data:{
+          data: {
             dog: localStorage.getItem("SelectedDogId"),
-            date:this.date.dateCalendar,
-            start_hour: this.date.timeClockStart,
-            end_hour: this.date.timeClockEnd,
+            date: localStorage.getItem("SelectedData"),
+            start_hour: localStorage.getItem("SelectedStartHour"),
+            end_hour: localStorage.getItem("SelectedEndHour"),
             trainer: localStorage.getItem("SelectedTrainerId")
           },
           headers: {
             Authorization: 'Token ' + localStorage.token
           }
-        }).catch((err) => {
-          let message = typeof err.response !== "undefined" ? err.response.data.message : err.message;
-          console.warn("error", message);
-        });
+        }).then(response => localStorage.setItem("walk", response.data.walk_id));
+        console.log(localStorage.getItem("walk"))
       },
-
-      getDogs2: function () {
+      postCords: function () {
         axios({
-          method: 'get',
-          url: 'http://127.0.0.1:8000/api/dog/',
+          method: 'post',
+          url: 'http://127.0.0.1:8000/api/coords/',
+          data: {
+            latitude_start: this.markers.split(",")[0],
+            longitude_start: this.markers.split(",")[1],
+            latitude_end: this.markers.split(",")[2],
+            longitude_end: this.markers.split(",")[3],
+            walk: localStorage.getItem("walk"),
+          },
           headers: {
             Authorization: 'Token ' + localStorage.token
           }
-        }).then(response => {this.dogs = response.data.results, console.log(response.status), console.log(response.statusText), console.log(response.data)});
+        })
       },
-    },
-    created() {
-      this.getToken()
-    }
+      created() {
+        this.getToken()
+      }
 
+    }
   }
 </script>
 

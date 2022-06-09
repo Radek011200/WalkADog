@@ -1,16 +1,14 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import NewWalk from "@/views/NewWalk";
+import NewWalk from "@/views/CreateWalk/NewWalk";
 import MainView from "@/views/MainView";
 import AboutView from "@/views/WalkList";
-import NewWalkPart2 from "@/views/NewWalkPart2";
-import NewWalkSummary from "@/views/NewWalkSummary";
+import NewWalkSummary from "@/views/CreateWalk/NewWalkSummary";
 import AddOpinion from "@/views/AddOpinion"
 import TestOpinionView from "@/views/TestOpinionView";
 import TrainersList from "@/views/TrainersList";
-import MapView from "@/views/MapView";
-import MainViewUnderConstruction from "@/views/MainViewUnderConstruction";
+import MapView from "@/views/CreateWalk/MapView";
 
 
 Vue.use(VueRouter)
@@ -37,11 +35,6 @@ const routes = [
     component: AboutView,
   },
   {
-    path: '/new-walk-part-2',
-    name: 'NewWalkPart2',
-    component: NewWalkPart2,
-  },
-  {
     path: '/test_opinion',
     name: 'TestOpinion',
     component: TestOpinionView
@@ -53,7 +46,7 @@ const routes = [
   },
   {
     path: '/add-opinion',
-    name: 'AddOpinon',
+    name: 'AddOpinion',
     component: AddOpinion,
   },
   {
@@ -63,13 +56,8 @@ const routes = [
   },
   {
     path: '/walk-list',
-    name: 'walklist',
+    name: 'WalkList',
     component: AboutView,
-  },
-  {
-    path: '/MainViewUnderConstruction',
-    name: 'MainViewUnderConstruction',
-    component: MainViewUnderConstruction,
   },
 ]
 
