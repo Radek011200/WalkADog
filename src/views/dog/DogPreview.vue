@@ -15,8 +15,8 @@
 
 <script>
 import TitleComponent from "@/components/TitleComponent";
-import DogPreviewPart1 from "@/components/DogPreviewPart1";
-import DogPreviewPart2 from "@/components/DogPreviewPart2";
+import DogPreviewPart1 from "@/components/dog/DogPreviewPart1";
+import DogPreviewPart2 from "@/components/dog/DogPreviewPart2";
 import axios from "axios";
 
 export default {

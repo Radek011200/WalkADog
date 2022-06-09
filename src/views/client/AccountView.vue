@@ -1,8 +1,12 @@
 <template>
   <div>
     <TitleComponent :title="title"></TitleComponent>
-    <v-btn color="success" @click="togglePopup" :large=true rounded> Powiadomienia</v-btn>
-    <v-btn color="success" @click="toggleModal" :large=true rounded> Wyloguj</v-btn>
+    <div>
+      <AccountPreview :client="client"/>
+      <v-btn color="success" @click="togglePopup" :large=true rounded> Powiadomienia</v-btn>
+      <v-btn color="success" @click="edit" :large=true rounded> Edytuj dane konta</v-btn>
+      <v-btn color="success" @click="toggleModal" :large=true rounded> Wyloguj</v-btn>
+    </div>
     <ModalComponent
         @confirm="logoutAction"
         @close-modal="toggleModal"
@@ -32,10 +36,12 @@
 import ModalComponent from "@/components/ModalComponent";
 import TitleComponent from "@/components/TitleComponent";
 import PopupComponent from "@/components/PopupComponent";
+import AccountPreview from "@/components/client/AccountPreview";
+import axios from "axios";
 
 export default {
   name: "AccountView",
-  components: {PopupComponent, ModalComponent, TitleComponent},
+  components: {AccountPreview, PopupComponent, ModalComponent, TitleComponent},
   data() {
     return {
       isActive: false,
@@ -46,6 +52,8 @@ export default {
       isActivePopup: false,
       closePopup: 'Zamknij',
       notifications: 'Brak powiadomień',
+      client: {},
+      id: localStorage.client_id
     };
   },
   methods: {
@@ -58,7 +66,29 @@ export default {
     logoutAction() {
       localStorage.removeItem("token");
       this.$router.push("/login");
-    }
+    },
+    edit() {
+      this.$router.push('/client/' + this.id + '/edit')
+    },
+    async getClientData() {
+      await axios({
+        method: "get",
+        url: "http://127.0.0.1:8000/api/client/" + this.id + "/",
+        headers: {
+          Authorization: 'Token ' + localStorage.token
+        }
+      }).then(response => {
+        this.client = response.data
+      })
+          .catch(function (error) {
+            if (error.response.status === 500) {
+              alert("Błąd serwera");
+            }
+          });
+    },
+  },
+  created() {
+    this.getClientData()
   }
 }
 </script>

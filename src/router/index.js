@@ -12,10 +12,12 @@ import TrainersList from "@/views/TrainersList";
 import LoginView from "@/views/LoginView";
 import MapView from "@/views/MapView";
 import NotFoundView from "@/views/NotFoundView";
-import AccountView from "@/views/AccountView";
-import DogsView from "@/views/DogsView";
-import DogPreview from "@/views/DogPreview";
-import DogCreateView from "@/views/DogCreateView";
+import AccountView from "@/views/client/AccountView";
+import DogsView from "@/views/dog/DogsView";
+import DogPreview from "@/views/dog/DogPreview";
+import DogCreateView from "@/views/dog/DogCreateView";
+import DogEditView from "@/views/dog/DogEditView";
+import AccountEditView from "@/views/client/AccountEditView";
 
 
 Vue.use(VueRouter)
@@ -100,9 +102,19 @@ const routes = [
         name: 'DogsPreview',
     },
     {
+        path: '/dogs/:dogId/edit',
+        component: DogEditView,
+        name: 'DogEditView'
+    },
+    {
         path: '/dog/add-dog',
         component: DogCreateView,
         name: 'DogsCreateView',
+    },
+    {
+        path: '/client/:clientId/edit',
+        component: AccountEditView,
+        name: 'AccountEditView',
     }
 ]
 
