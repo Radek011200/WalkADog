@@ -10,17 +10,30 @@
                         <v-icon size="75px">mdi-file-image</v-icon>
                         <span class="headline"><b> {{ dog_name }} </b></span>
                     <ul style="list-style-type: none;">
+                        <li>{{date}}</li>
                         <li>{{start_hour}} - {{end_hour}}</li>
                         <li><b>{{trainer}}</b></li>
                     </ul>
                     </div>
                 </v-container>
             </v-card-text>
-            <v-card-actions class="lista" style="margin: 0 20px;">
+            <v-card-actions v-if="mode===0" class="lista" style="margin: 0 20px;">
                 <WalkResign/>
                 <v-btn href="#" color="success" :large=true rounded>
                     Edytuj
                 </v-btn>
+            </v-card-actions>
+            <v-card-actions v-if="mode===1" class="lista" style="margin: 0 20px;">
+              <WalkResign/>
+              <v-btn href="#" color="success" :large=true rounded>
+                Mapa
+              </v-btn>
+            </v-card-actions>
+            <v-card-actions v-if="mode===2" class="lista" style="margin: 0 20px;">
+              <WalkResign/>
+              <v-btn href="#" color="success" :large=true rounded>
+                Opinia
+              </v-btn>
             </v-card-actions>
           </v-card>
         </v-flex>
@@ -51,9 +64,17 @@ export default {
       type: String,
       default: "End Hour"
     },
+    date: {
+      type: String,
+      default: "1900-01-01"
+    },
     trainer: {
       type: String,
       default: "Trainer"
+    },
+    mode: {
+      type: Number,
+      default: 0
     }
   }
 }

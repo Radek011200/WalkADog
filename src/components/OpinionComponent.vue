@@ -68,7 +68,7 @@ export default {
   font-size: 20px;
 }
 .star{
-  background: linear-gradient(to right, black, black var(--fill), white var(--fill), white);
+  background: linear-gradient(to right, black, black var(--fill), lightgrey var(--fill), lightgrey);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;

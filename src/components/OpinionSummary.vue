@@ -100,7 +100,7 @@ export default {
   box-shadow: 0px 0px 0px 2px rgb(0, 0, 0);
 }
 .star{
-  background: linear-gradient(to right, black, black var(--fill), white var(--fill), white);
+  background: linear-gradient(to right, black, black var(--fill), lightgrey var(--fill), lightgrey);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
