@@ -77,10 +77,9 @@ export default {
       availability: [],
       selectedStartHour: null,
       data: localStorage.getItem("SelectedData"),
-      godzina: console.log(localStorage.getItem("SelectedStartHour"))
+      godzina: localStorage.getItem("SelectedStartHour")
     }
   },
-
 
   methods: {
     back() {
@@ -122,16 +121,6 @@ export default {
           TrainerNameList[i].style.color = 'green'
         }
       }
-    },
-    getToken() {
-      axios({
-        method: 'post',
-        url: 'http://127.0.0.1:8000/api-token-auth/',
-        data: {
-          username: 'admin',
-          password: 'admin'
-        }
-      }).then(response => localStorage.setItem("token", response.data.token));
     },
     getTrainers() {
       axios({

@@ -37,11 +37,27 @@ export default {
 
   created() {
     this.title = "Lista Spacerów";
-    this.getToken();
     this.getDogs();
     this.getGroupedWalks()
-  },
-  mounted() {
+
+    if (localStorage.getItem('added_walk') !== 'null') {
+      this.$toast.success("Pomyślnie dodano spacer", {
+        position: "top-right",
+        timeout: 4718,
+        closeOnClick: true,
+        pauseOnFocusLoss: true,
+        pauseOnHover: true,
+        draggable: true,
+        draggablePercent: 1,
+        showCloseButtonOnHover: false,
+        hideProgressBar: true,
+        closeButton: "button",
+        icon: true,
+        rtl: false,
+      });
+
+    }
+    localStorage.setItem('added_walk', 'null')
   },
 
   data() {
@@ -56,21 +72,10 @@ export default {
   },
 
   methods: {
-    getToken: function () {
-      axios({
-        method: 'post',
-        url: 'http://127.0.0.1:8000/api-token-auth/',
-        data: {
-          username: 'admin',
-          password: 'admin'
-        }
-      }).then(response => localStorage.setItem("token", response.data.token));
-    },
     getDogs: function () {
       axios({
         method: 'get',
-        url: 'http://127.0.0.1:8000/api/client/1/dogs/',//api/dog
-        // url: 'http://127.0.0.1:8000/api/dog/',
+        url: 'http://127.0.0.1:8000/api/client/1/dogs/',
         headers: {
           Authorization: 'Token ' + localStorage.token
         }
