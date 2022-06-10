@@ -85,6 +85,9 @@ export default {
       });
     },
     czyWybranoPsa: function () {
+      setTimeout(this.czyWybranoPsa2, 110)
+    },
+    czyWybranoPsa2:function (){
       this.czyDalej = 0;
     },
     czyNieWybranoPsa: function () {
@@ -151,6 +154,7 @@ export default {
   align-items: center;
   position: unset;
   flex-grow: 0;
+  width: fit-content;
 }
 
 .column {
