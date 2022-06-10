@@ -15,7 +15,7 @@ import "vue-toastification/dist/index.css";
 import Toast from "vue-toastification";
 
 Vue.config.productionTip = false
-
+// Vue.config.silent = true
 library.add(fas)
 
 new Vue({
