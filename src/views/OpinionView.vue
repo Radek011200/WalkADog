@@ -8,9 +8,6 @@
         <OpinionComponent :opinion_text="review.comment" :star_rating="review.rating" :date_posted="getDate(review.date)" :username="review.client.username"></OpinionComponent>
       </v-list-item-content>
     </v-list-item>
-    <v-card-actions class="justify-center">
-      <v-btn color="success" :x-large=true rounded>Dodaj Opinię </v-btn>
-    </v-card-actions>
   </div>
 </template>
 

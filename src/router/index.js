@@ -8,8 +8,8 @@ import NewWalkSummary from "@/views/CreateWalk/NewWalkSummary";
 import AddOpinion from "@/views/AddOpinion"
 import OpinionView from "@/views/OpinionView";
 import TrainersList from "@/views/TrainersList";
-import MapView from "@/views/CreateWalk/MapView";
 import LoginView from "@/views/LoginView";
+import MapView from "@/views/MapView";
 import NotFoundView from "@/views/NotFoundView";
 import AccountView from "@/views/client/AccountView";
 import DogsView from "@/views/dog/DogsView";

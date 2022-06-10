@@ -31,7 +31,7 @@
           <v-btn
             color="primary"
             text
-            @click="dialog = true"
+            @click="deleteWalk"
           >
             Potwierdź
           </v-btn>
@@ -51,6 +51,12 @@
 <script>
   export default {
     name: "WalkResign",
+    methods:{
+      deleteWalk() {
+        this.$emit("delete_walk");
+        this.dialog = false;
+      }
+    },
     data () {
       return {
         dialog: false,
