@@ -23,7 +23,7 @@ export default {
     if (localStorage.getItem("token")) {
       this.$router.push("/");
     }
-    if (localStorage.getItem('logout') !== 'null') {
+    if (localStorage.getItem('logout')) {
       this.$toast.warning("Wylogowano pomyślnie!", {
         position: "top-right",
         timeout: 4718,
@@ -40,7 +40,7 @@ export default {
       });
 
     }
-    localStorage.setItem('logout', 'null')
+    localStorage.removeItem('logout')
   },
   methods: {
     async getToken(login, password) {

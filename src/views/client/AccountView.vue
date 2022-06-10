@@ -90,7 +90,7 @@ export default {
   },
   created() {
     this.getClientData()
-    if (localStorage.getItem('edited_client') !== 'null') {
+    if (localStorage.getItem('edited_client')) {
       this.$toast.success("Dane zostały zaktualizowane!", {
         position: "top-right",
         timeout: 4718,
@@ -106,7 +106,7 @@ export default {
         rtl: false,
       });
     }
-    localStorage.setItem('edited_client', 'null')
+    localStorage.removeItem('edited_client')
   }
 }
 </script>

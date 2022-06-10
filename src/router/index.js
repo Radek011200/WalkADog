@@ -19,6 +19,7 @@ import DogEditView from "@/views/dog/DogEditView";
 import AccountEditView from "@/views/client/AccountEditView";
 import OpinionDetails from "@/views/OpinionDetails";
 import RememberPass from "@/views/RememberPass";
+import AccountRegister from "@/views/client/AccountRegister";
 
 
 Vue.use(VueRouter)
@@ -127,6 +128,11 @@ const routes = [
         component: RememberPass,
         name: 'RememberPass',
     },
+    {
+        path: '/register',
+        component: AccountRegister,
+        name: 'AccountRegister',
+    }
 ]
 
 const router = new VueRouter({

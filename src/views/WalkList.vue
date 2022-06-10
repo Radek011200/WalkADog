@@ -64,7 +64,8 @@ export default {
     this.title = "Lista Spacerów";
     this.getGroupedWalks()
 
-    if (localStorage.getItem('added_opinion') !== 'null') {
+    if (localStorage.getItem('added_opinion')) {
+      console.log(localStorage.getItem('added_opinion'))
       this.$toast.success("Pomyślnie dodano opinie", {
         position: "top-right",
         timeout: 4718,
@@ -81,7 +82,7 @@ export default {
       });
 
     }
-    localStorage.setItem('added_opinion', 'null')
+    localStorage.removeItem('added_opinion')
   },
 
   data() {
