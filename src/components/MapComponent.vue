@@ -6,7 +6,7 @@
             v-on:click='remove(), showMarkers()'>Usuń znacznik
     </v-btn>
     <v-btn text :x-large=true @click="back()" style="position:absolute; bottom: 180px">Powrót</v-btn>
-    <v-btn href="/new-walk-summary" color="success" :x-large=true rounded style="position:absolute; bottom: 5%" @click="saveMarkers()">Podsumowanie</v-btn>
+    <v-btn :disabled="!(czyMarkery===2)" href="/new-walk-summary" color="success" :x-large=true rounded style="position:absolute; bottom: 5%" @click="saveMarkers()">Podsumowanie</v-btn>
     <l-map @click="addMarker"
            style="position: fixed; height: 40%; width: 90%; max-width: 300px; border-radius: 25px; border: 2px solid #00B300;"
            :zoom="zoom" :center="center">
@@ -57,7 +57,8 @@ export default {
         color: 'blue',
         timer: [2]
       },
-      lista:[]
+      lista:[],
+      czyMarkery:0
     };
   },
   methods: {
@@ -70,7 +71,11 @@ export default {
     remove() {
       this.markers.splice(-1, 1);
       this.polyline.latlngs.splice(-1, 1);
+      if(this.czyMarkery >0){
+        this.czyMarkery = this.czyMarkery-1
+      }
     },
+
     addMarker(event) {
       //if(this.markers.length < 2 &&( event.latlng < this.markers[0] + [0.01, 0.01] || event.latlng > this.markers[0] - [0.01, 0.01])) {
       if (this.markers.length < 2) {
@@ -79,12 +84,17 @@ export default {
         this.circle.timer.push(50);
         this.lista.push(event.latlng)
         console.log(this.lista)
+        this.czyMarkery = this.czyMarkery+1
+        if(this.czyMarkery ===3){
+          this.czyMarkery=0
+        }
+        console.log(this.czyMarkery)
       }
 
     },
     saveMarkers: function (){
       localStorage.setItem("Markers", this.lista)
-    }
+    },
     // changeColor() {
     //   document.getElementById("btn").style.backgroundColor = '#00B300';
     //   document.getElementById("btn").style.color = 'white';

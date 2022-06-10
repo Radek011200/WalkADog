@@ -45,16 +45,6 @@
       back() {
         this.$router.go(-1)
       },
-      getToken: function () {
-        axios({
-          method: 'post',
-          url: 'http://127.0.0.1:8000/api-token-auth/',
-          data: {
-            username: 'admin',
-            password: 'admin'
-          }
-        }).then(response => localStorage.setItem("token", response.data.token));
-      },
       postAWalk: function () {
         axios({
           method: 'post',
@@ -89,7 +79,6 @@
         })
       },
       created() {
-        this.getToken()
       }
 
     }

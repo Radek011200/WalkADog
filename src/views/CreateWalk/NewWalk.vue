@@ -1,7 +1,7 @@
 <template>
   <div>
     <TitleComponent :title="title"></TitleComponent>
-    <Calendar v-on:change="updateDate($event)"/>
+    <Calendar v-on:change="updateDate($event)" @czyWybranoDate="czyWybranoDate"/>
     <v-container v-if="czyWybranoTrenera">
       <h3>Dostępni Trenerzy:</h3>
       <v-list-item-group>
@@ -23,7 +23,7 @@
     <v-container v-if="!czyWybranoTrenera">
       <v-list-item-group>
         <v-list-item v-for="godzina in this.availability" :key="godzina.id" dense
-                     v-on:click="selectedStartHour=godzina, saveDateAndHour(), displayHour()">
+                     v-on:click="selectedStartHour=godzina, saveDateAndHour(), displayHour(), czyWybranoGodz()">
           <div class="lista">
             <v-list-item-content>
               <v-list-item-title>
@@ -35,13 +35,13 @@
       </v-list-item-group>
     </v-container>
     <v-card-actions class="justify-center" v-if="!czyWybranoTrenera &&  data!=0 && godzina !=0">
-      <v-btn href="/map-view" color="success" :x-large=true rounded>Przejdź Dalej</v-btn>
+      <v-btn :disabled="czyDalej1 || czyDalej2" href="/map-view" color="success" :x-large=true rounded>Przejdź Dalej</v-btn>
     </v-card-actions>
     <v-card-actions class="justify-center" v-if="czyWybranoTrenera">
       <v-btn text :x-large=true @click="back()">Powrót</v-btn>
     </v-card-actions>
     <v-card-actions class="justify-center" v-if="!czyWybranoTrenera">
-      <v-btn text :x-large=true @click="czyWybranoTrenera=1">Powrót</v-btn>
+      <v-btn text :x-large=true @click="czyWybranoTrenera=1, zerujDalej()">Powrót</v-btn>
     </v-card-actions>
 
 
@@ -77,7 +77,9 @@ export default {
       availability: [],
       selectedStartHour: null,
       data: localStorage.getItem("SelectedData"),
-      godzina: console.log(localStorage.getItem("SelectedStartHour"))
+      godzina: localStorage.getItem("SelectedStartHour"),
+      czyDalej1: true,
+      czyDalej2: true
     }
   },
 
@@ -94,6 +96,17 @@ export default {
     updateDate: function (updatedDate) {
       this.date = updatedDate
       console.log(this.date)
+    },
+    czyWybranoGodz: function () {
+      this.czyDalej1 = false
+      console.log(this.czyDalej1, this.czyDalej2)
+    },
+    czyWybranoDate: function () {
+      this.czyDalej2 = false
+    },
+    zerujDalej: function (){
+      this.czyDalej2 = true
+      this.czyDalej1 = true
     },
     saveTrainer: function () {
       localStorage.setItem("SelectedTrainerId", this.selectedTrainer.trainer_id)
@@ -123,16 +136,7 @@ export default {
         }
       }
     },
-    getToken() {
-      axios({
-        method: 'post',
-        url: 'http://127.0.0.1:8000/api-token-auth/',
-        data: {
-          username: 'admin',
-          password: 'admin'
-        }
-      }).then(response => localStorage.setItem("token", response.data.token));
-    },
+
     getTrainers() {
       axios({
         method: 'get',
@@ -148,7 +152,7 @@ export default {
     getAvailability() {
       axios({
         method: 'get',
-        url: `http://127.0.0.1:8000/api/availability/get_availability?trainer_id=${this.selectedTrainer.trainer_id}&date=2022-06-16`,
+        url: `http://127.0.0.1:8000/api/availability/get_availability?trainer_id=${this.selectedTrainer.trainer_id}&date=${this.date}`,
         headers: {
           Authorization: 'Token ' + localStorage.token
         }

@@ -1,7 +1,7 @@
 <template>
   <v-responsive class = "wholeDogContainer" :name="pet">
     <v-container class = "columns">
-<!--:name="pet"--><input type="image" :src="image" alt="text" id="btnControl" class="dogBox" @focus="selectedDog= pet, saveDog()" @blur="unbold()" v-on:click="bold">
+      <input type="image" :src="image" alt="text" id="btnControl" class="dogBox" @focus="selectedDog= pet, saveDog(), czyWybranoPsa() " @blur="unbold(), czyNieWybranoPsa()" v-on:click="bold">
       <v-container id="show" class="dogName">
         {{pet.name}}
       </v-container>
@@ -24,52 +24,59 @@ export default {
   },
   data() {
     return {
-      selectedDog: null
+      selectedDog: null,
+      czyNieDalej: true
     }
   },
   methods: {
     bold: function () {
       var dogNameList = document.getElementsByClassName("dogName")
-      for(var i = 0; i<dogNameList.length; i++){
+      for (var i = 0; i < dogNameList.length; i++) {
         dogNameList[i].style.fontWeight = 'normal'
-        if(dogNameList[i].innerText === this.selectedDog.name){
+        if (dogNameList[i].innerText === this.selectedDog.name) {
           dogNameList[i].style.fontWeight = 'bold'
         }
       }
     },
     unbold: function () {
       var dogNameList = document.getElementsByClassName("dogName")
-      for(var i = 0; i<dogNameList.length; i++){
+      for (var i = 0; i < dogNameList.length; i++) {
         dogNameList[i].style.fontWeight = 'normal'
       }
     },
-    saveDog: function (){
-      localStorage.setItem("SelectedDogId",this.selectedDog.dog_id)
-      localStorage.setItem("SelectedDogName",this.selectedDog.name)
-      localStorage.setItem("SelectedDogImage",this.selectedDog.photo)
+    saveDog: function () {
+      localStorage.setItem("SelectedDogId", this.selectedDog.dog_id)
+      localStorage.setItem("SelectedDogName", this.selectedDog.name)
+      localStorage.setItem("SelectedDogImage", this.selectedDog.photo)
     },
+    czyWybranoPsa: function () {
+      this.$emit("czyWybranoPsa");
+    },
+    czyNieWybranoPsa: function () {
+      this.$emit("czyNieWybranoPsa")
+    },
+
     myEventHandler: function () {
       var boxList = document.getElementsByClassName("dogBox")
       if (window.screen.width < 600) {
-        for (var i =0; i<boxList.length; i++){
+        for (var i = 0; i < boxList.length; i++) {
           boxList[i].style.width = "45px";
           boxList[i].style.height = "45px";
         }
-      }
-      else{
-        for (var j =0; j<boxList.length; j++){
+      } else {
+        for (var j = 0; j < boxList.length; j++) {
           boxList[j].style.width = "70px";
           boxList[j].style.height = "70px";
           console.log(boxList[j])
         }
       }
-    }
-  },
-  created() {
-    window.addEventListener("resize", this.myEventHandler);
-  },
-  destroyed() {
-    window.removeEventListener("resize", this.myEventHandler);
+    },
+    created() {
+      window.addEventListener("resize", this.myEventHandler);
+    },
+    destroyed() {
+      window.removeEventListener("resize", this.myEventHandler);
+    },
   },
 }
 

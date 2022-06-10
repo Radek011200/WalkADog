@@ -4,7 +4,7 @@
       <v-container class="FigmaMainView">
         <v-container class="column">Wybór zwierzaka</v-container>
         <v-list-item v-for="dog in this.dogs" :key="dog.url" dense>
-          <ChoseAPet :pet="dog"></ChoseAPet>
+          <ChoseAPet @czyWybranoPsa="czyWybranoPsa" @czyNieWybranoPsa="czyNieWybranoPsa" :pet="dog"></ChoseAPet>
         </v-list-item>
       </v-container>
     </v-container>
@@ -17,7 +17,7 @@
       </v-list-item-content>
     </v-list-item>
     <v-container>
-      <v-btn href="/new-walk" color="success" :x-large=true rounded>Zaplanuj spacer</v-btn>
+      <v-btn :disabled="czyDalej" href="/new-walk" color="success" :x-large=true rounded>Zaplanuj spacer</v-btn>
     </v-container>
   </v-responsive>
 </template>
@@ -37,7 +37,6 @@ export default {
 
   created() {
     this.title = "Lista Spacerów";
-    this.getToken();
     this.getDogs();
     this.getGroupedWalks()
   },
@@ -52,31 +51,30 @@ export default {
       walks_past: [],
       walks_present: [],
       walks_future: [],
+      czyDalej: 1
     }
   },
 
   methods: {
-    getToken: function () {
-      axios({
-        method: 'post',
-        url: 'http://127.0.0.1:8000/api-token-auth/',
-        data: {
-          username: 'admin',
-          password: 'admin'
-        }
-      }).then(response => localStorage.setItem("token", response.data.token));
-    },
     getDogs: function () {
       axios({
         method: 'get',
-        url: 'http://127.0.0.1:8000/api/client/1/dogs/',//api/dog
-        // url: 'http://127.0.0.1:8000/api/dog/',
+        url: `http://127.0.0.1:8000/api/client/${localStorage.getItem("client_id")}/dogs/`,
         headers: {
           Authorization: 'Token ' + localStorage.token
         }
       }).then(response => {
         this.dogs = response.data, console.log(response.status), console.log(response.statusText), console.log(response.data)
       });
+    },
+    czyWybranoPsa: function () {
+      this.czyDalej = 0;
+    },
+    czyNieWybranoPsa: function () {
+      setTimeout(this.czyNieWybranoPsa2, 100)
+    },
+    czyNieWybranoPsa2: function (){
+      this.czyDalej = 1;
     },
     async getWalks() {
       await axios({
@@ -107,7 +105,7 @@ export default {
       this.walks_future = []
       await this.getWalks();
       this.walks.forEach(this.groupWalk)
-    }
+    },
   },
 }
 
@@ -134,11 +132,13 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: unset;
+  flex-grow: 0;
 }
 
 .column {
   position: absolute;
-  top: 20px;
+  top: 10px;
 
 }
 
