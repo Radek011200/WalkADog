@@ -17,6 +17,7 @@ import DogPreview from "@/views/dog/DogPreview";
 import DogCreateView from "@/views/dog/DogCreateView";
 import DogEditView from "@/views/dog/DogEditView";
 import AccountEditView from "@/views/client/AccountEditView";
+import RememberPass from "@/views/RememberPass";
 
 
 Vue.use(VueRouter)
@@ -109,6 +110,11 @@ const routes = [
         path: '/client/:clientId/edit',
         component: AccountEditView,
         name: 'AccountEditView',
+    },
+    {
+        path: '/remember-pass',
+        component: RememberPass,
+        name: 'RememberPass',
     }
 ]
 
