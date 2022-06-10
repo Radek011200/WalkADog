@@ -1,5 +1,5 @@
 <template>
-  <v-responsive>
+  <v-responsive >
     <v-container :fluid="true" class="container">
       <v-container class="FigmaMainView">
         <v-container class="column">Wybór zwierzaka</v-container>
@@ -85,7 +85,7 @@ export default {
       });
     },
     czyWybranoPsa: function () {
-      setTimeout(this.czyWybranoPsa2, 110)
+      setTimeout(this.czyWybranoPsa2, 101)
     },
     czyWybranoPsa2:function (){
       this.czyDalej = 0;
@@ -142,6 +142,10 @@ export default {
   max-width: fit-content;
   block-size: fit-content;
   padding-top: 40px;
+  padding-left:0px;
+  padding-right:0px;
+  margin: auto;
+  overflow:auto;
 }
 
 .lista {
@@ -154,7 +158,8 @@ export default {
   align-items: center;
   position: unset;
   flex-grow: 0;
-  width: fit-content;
+  max-width: fit-content;
+
 }
 
 .column {
