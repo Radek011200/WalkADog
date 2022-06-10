@@ -3,28 +3,28 @@
     <v-container>
       <v-layout row wrap>
         <v-flex xs12>
-          <v-card outlined>          
+          <v-card outlined>
             <v-card-text>
-                <v-container>
-                        <div class="lista">
-                            <v-icon size="75px">mdi-account-box</v-icon>
-                            <ul style="list-style-type: none;">
-                                <li><b>{{name}}</b></li>
-                                <li>{{mobile}}</li>
-                            </ul>
-                        </div>
-                </v-container>
+              <v-container>
+                <div class="lista">
+                  <v-icon size="75px">mdi-account-box</v-icon>
+                  <ul style="list-style-type: none;">
+                    <li><b>{{ name }}</b></li>
+                    <li>{{ mobile }}</li>
+                  </ul>
+                </div>
+              </v-container>
             </v-card-text>
             <v-card-actions class="lista">
-                <v-spacer></v-spacer>
-                <v-btn href="#" color="success" :large=true rounded>
-                    Podgląd opinii
-                </v-btn>
+              <v-spacer></v-spacer>
+              <v-btn href="#" color="success" :large=true rounded>
+                Podgląd opinii
+              </v-btn>
             </v-card-actions>
           </v-card>
         </v-flex>
       </v-layout>
-      </v-container>
+    </v-container>
   </div>
 </template>
 
@@ -45,7 +45,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
 .lista {
   display: flex;

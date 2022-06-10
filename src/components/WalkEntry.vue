@@ -3,29 +3,29 @@
     <v-container>
       <v-layout row wrap>
         <v-flex xs12>
-          <v-card outlined>          
+          <v-card outlined>
             <v-card-text>
-                <v-container>
-                    <div class="lista">
-                        <v-icon size="75px">mdi-file-image</v-icon>
-                        <span class="headline"><b> {{ dog_name }} </b></span>
-                    <ul style="list-style-type: none;">
-                        <li>{{start_hour}} - {{end_hour}}</li>
-                        <li><b>{{trainer}}</b></li>
-                    </ul>
-                    </div>
-                </v-container>
+              <v-container>
+                <div class="lista">
+                  <v-icon size="75px">mdi-file-image</v-icon>
+                  <span class="headline"><b> {{ dog_name }} </b></span>
+                  <ul style="list-style-type: none;">
+                    <li>{{ start_hour }} - {{ end_hour }}</li>
+                    <li><b>{{ trainer }}</b></li>
+                  </ul>
+                </div>
+              </v-container>
             </v-card-text>
             <v-card-actions class="lista" style="margin: 0 20px;">
-                <WalkResign/>
-                <v-btn href="#" color="success" :large=true rounded>
-                    Edytuj
-                </v-btn>
+              <WalkResign/>
+              <v-btn href="#" color="success" :large=true rounded>
+                Edytuj
+              </v-btn>
             </v-card-actions>
           </v-card>
         </v-flex>
       </v-layout>
-      </v-container>
+    </v-container>
   </div>
 </template>
 
@@ -59,7 +59,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
 .lista {
   display: flex;

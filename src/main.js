@@ -11,6 +11,8 @@ import 'roboto-fontface/css/roboto/roboto-fontface.css'
 import '@mdi/font/css/materialdesignicons.css'
 import axios from "axios";
 import bulma from "bulma";
+import "vue-toastification/dist/index.css";
+import Toast from "vue-toastification";
 
 Vue.config.productionTip = false
 
@@ -22,6 +24,7 @@ new Vue({
     render: h => h(App)
 }).$mount('#app')
 
+Vue.use(Toast);
 Vue.use(Vuetify).component('fa', FontAwesomeIcon)
 Vue.use(bulma)
 Vue.component('my-component', {
