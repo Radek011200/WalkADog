@@ -1,10 +1,10 @@
 <template>
-  <v-responsive>
+  <v-responsive >
     <v-container :fluid="true" class="container">
       <v-container class="FigmaMainView">
         <v-container class="column">Wybór zwierzaka</v-container>
         <v-list-item v-for="dog in this.dogs" :key="dog.url" dense>
-          <ChoseAPet :pet="dog"></ChoseAPet>
+          <ChoseAPet @czyWybranoPsa="czyWybranoPsa" @czyNieWybranoPsa="czyNieWybranoPsa" :pet="dog"></ChoseAPet>
         </v-list-item>
       </v-container>
     </v-container>
@@ -17,7 +17,7 @@
       </v-list-item-content>
     </v-list-item>
     <v-container>
-      <v-btn href="/new-walk" color="success" :x-large=true rounded>Zaplanuj spacer</v-btn>
+      <v-btn :disabled="czyDalej" href="/new-walk" color="success" :x-large=true rounded>Zaplanuj spacer</v-btn>
     </v-container>
   </v-responsive>
 </template>
@@ -68,6 +68,7 @@ export default {
       walks_past: [],
       walks_present: [],
       walks_future: [],
+      czyDalej: 1
     }
   },
 
@@ -75,13 +76,25 @@ export default {
     getDogs: function () {
       axios({
         method: 'get',
-        url: 'http://127.0.0.1:8000/api/client/1/dogs/',
+        url: `http://127.0.0.1:8000/api/client/${localStorage.getItem("client_id")}/dogs/`,
         headers: {
           Authorization: 'Token ' + localStorage.token
         }
       }).then(response => {
         this.dogs = response.data, console.log(response.status), console.log(response.statusText), console.log(response.data)
       });
+    },
+    czyWybranoPsa: function () {
+      setTimeout(this.czyWybranoPsa2, 101)
+    },
+    czyWybranoPsa2:function (){
+      this.czyDalej = 0;
+    },
+    czyNieWybranoPsa: function () {
+      setTimeout(this.czyNieWybranoPsa2, 100)
+    },
+    czyNieWybranoPsa2: function (){
+      this.czyDalej = 1;
     },
     async getWalks() {
       await axios({
@@ -112,7 +125,7 @@ export default {
       this.walks_future = []
       await this.getWalks();
       this.walks.forEach(this.groupWalk)
-    }
+    },
   },
 }
 
@@ -129,6 +142,10 @@ export default {
   max-width: fit-content;
   block-size: fit-content;
   padding-top: 40px;
+  padding-left:0px;
+  padding-right:0px;
+  margin: auto;
+  overflow:auto;
 }
 
 .lista {
@@ -139,11 +156,15 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: unset;
+  flex-grow: 0;
+  max-width: fit-content;
+
 }
 
 .column {
   position: absolute;
-  top: 20px;
+  top: 10px;
 
 }
 

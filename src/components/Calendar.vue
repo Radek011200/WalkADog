@@ -9,7 +9,8 @@
         :month-format="getMonthFormat"
         :header-date-format="getHeaderDateFormat"
         :title-date-format="getTitleDateFormat"
-        v-on:change="updateDate($event)"
+        v-on:change="updateDate($event), czyWybranoDate()"
+
     >
 
     </v-date-picker>
@@ -38,6 +39,9 @@ export default {
     updateDate: function (updatedDate) {
       this.date = updatedDate
       this.$emit('change', this.date)
+    },
+    czyWybranoDate: function () {
+      this.$emit("czyWybranoDate");
     },
   }
 }

@@ -28,7 +28,8 @@ export default {
       dog: localStorage.getItem("SelectedDogName"),
       trainer: localStorage.getItem("SelectedTrainerName"),
       imageDog: localStorage.getItem("SelectedDogImage"),
-      imageTrainer: localStorage.getItem("SelectedTrainerImage")
+      imageTrainer: localStorage.getItem("SelectedTrainerImage"),
+      czyMarkery: 0
     }
   },
   methods: {
