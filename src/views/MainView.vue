@@ -40,7 +40,7 @@ export default {
     this.getDogs();
     this.getGroupedWalks()
 
-    if (localStorage.getItem('added_walk') !== 'null') {
+    if (localStorage.getItem('added_walk')) {
       this.$toast.success("Pomyślnie dodano spacer", {
         position: "top-right",
         timeout: 4718,
@@ -57,7 +57,7 @@ export default {
       });
 
     }
-    localStorage.setItem('added_walk', 'null')
+    localStorage.removeItem('added_walk')
   },
 
   data() {

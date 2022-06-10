@@ -43,7 +43,7 @@ export default {
   },
   created() {
     this.getDogsData();
-    if (localStorage.getItem('edited_dog') !== 'null') {
+    if (localStorage.getItem('edited_dog')) {
       this.$toast.success("Dane zostały zaktualizowane!", {
         position: "top-right",
         timeout: 4718,
@@ -59,10 +59,10 @@ export default {
         rtl: false,
       });
     }
-    localStorage.setItem('edited_dog', 'null')
+    localStorage.removeItem('edited_dog')
 
 
-    if (localStorage.getItem('added_dog') !== 'null') {
+    if (localStorage.getItem('added_dog')) {
       this.$toast.success("Pomyślnie dodano psa", {
         position: "top-right",
         timeout: 4718,
@@ -79,7 +79,7 @@ export default {
       });
 
     }
-    localStorage.setItem('added_dog', 'null')
+    localStorage.removeItem('added_dog')
 
 
   },
