@@ -51,17 +51,14 @@ export default {
       }).then(response => console.log(response)).catch(function (error) {
         if (error.response) {
           alert(1)
-
         } else if (error.request) {
           alert(2)
-//do something else
-
         } else if (error.message) {
           alert(3)
-//do something other than the other two
-
         }
       })
+      localStorage.setItem('edited_client', 'true')
+      this.$router.push('/account')
     }
   },
   created() {

@@ -39,8 +39,25 @@ export default {
     this.title = "Lista Spacerów";
     this.getDogs();
     this.getGroupedWalks()
-  },
-  mounted() {
+
+    if (localStorage.getItem('added_walk') !== 'null') {
+      this.$toast.success("Pomyślnie dodano spacer", {
+        position: "top-right",
+        timeout: 4718,
+        closeOnClick: true,
+        pauseOnFocusLoss: true,
+        pauseOnHover: true,
+        draggable: true,
+        draggablePercent: 1,
+        showCloseButtonOnHover: false,
+        hideProgressBar: true,
+        closeButton: "button",
+        icon: true,
+        rtl: false,
+      });
+
+    }
+    localStorage.setItem('added_walk', 'null')
   },
 
   data() {

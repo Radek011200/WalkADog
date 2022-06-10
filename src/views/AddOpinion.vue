@@ -93,6 +93,7 @@ export default {
           }
         }).then(response => this.temp = response.data);
         await this.addOpinion2();
+        localStorage.setItem('added_opinion', 'true')
         this.back()
       }
     },

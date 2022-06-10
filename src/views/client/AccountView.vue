@@ -90,6 +90,23 @@ export default {
   },
   created() {
     this.getClientData()
+    if (localStorage.getItem('edited_client') !== 'null') {
+      this.$toast.success("Dane zostały zaktualizowane!", {
+        position: "top-right",
+        timeout: 4718,
+        closeOnClick: true,
+        pauseOnFocusLoss: true,
+        pauseOnHover: true,
+        draggable: true,
+        draggablePercent: 1,
+        showCloseButtonOnHover: false,
+        hideProgressBar: true,
+        closeButton: "button",
+        icon: true,
+        rtl: false,
+      });
+    }
+    localStorage.setItem('edited_client', 'null')
   }
 }
 </script>
